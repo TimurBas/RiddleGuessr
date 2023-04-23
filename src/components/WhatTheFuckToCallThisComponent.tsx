@@ -18,7 +18,7 @@ const WhatTheFuckToCallThisComponent = () => {
   }
   return (
     <div className="flex flex-col justify-center items-center gap-y-6">
-      <p className="text-5xl">{title}</p>
+      <p className="text-5xl text-gray-100">{title}</p>
       <span className="text-7xl ">{data}</span>
     </div>
   );
