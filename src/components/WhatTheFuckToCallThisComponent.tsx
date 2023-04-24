@@ -1,12 +1,7 @@
 import React from "react";
 import useChatGptEndpoint from "../hooks/useChatGptEndpoint";
-import movieTitles from "../../movie-titles.json";
 
-const WhatTheFuckToCallThisComponent = () => {
-  const randomIndex = Math.floor(Math.random() * movieTitles.length);
-  const movieTitleObj = movieTitles[randomIndex];
-  const title = movieTitleObj.title;
-
+const WhatTheFuckToCallThisComponent = ({ title }: { title: string }) => {
   const { data, error, isLoading } = useChatGptEndpoint({ input: title });
 
   if (isLoading) {
