@@ -28,7 +28,6 @@ export default async function handler(
       ],
     });
     const choices = completion.data.choices;
-    console.log(choices);
     const message = choices[0].message!;
     res.status(200).json({ answer: message.content });
   } catch (error: any) {

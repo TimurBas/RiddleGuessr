@@ -20,9 +20,7 @@ export default function useChatGptEndpoint({ input }: Props): Response<string> {
     const fetchData = async () => {
       try {
         const response = await GetChatGptAnswer(input);
-        console.log(response);
         const answer = response.answer;
-        console.log(answer);
         setData(answer);
       } catch (error) {
         setError(error as Error);
