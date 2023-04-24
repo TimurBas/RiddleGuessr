@@ -5,7 +5,9 @@ type ChatGptResponse = {
 export default async function GetChatGptAnswer(
   input: string
 ): Promise<ChatGptResponse> {
-  const url = `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/chatgpt`;
+  const httpOrHttps =
+    process.env.NEXT_PUBLIC_VERCEL_URL === "localhost:3000" ? "http" : "https";
+  const url = `${httpOrHttps}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/chatgpt`;
   const options: RequestInit = {
     method: "POST",
     headers: {
