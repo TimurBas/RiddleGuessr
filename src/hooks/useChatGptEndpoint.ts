@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GetChatGptAnswer } from "../client/api";
+import { GetChatGptAnswer } from "../data/client/api";
 
 type Props = {
   input: string;

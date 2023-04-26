@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GetStabilityAnswer } from "../client/api";
+import { GetStabilityAnswer } from "../data/client/api";
 
 type Props = {
   input: string;

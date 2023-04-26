@@ -1,7 +1,12 @@
 import React from "react";
-import useChatGptEndpoint from "../hooks/useChatGptEndpoint";
+import useChatGptEndpoint from "../../hooks/useChatGptEndpoint";
+import Emoji from "../../components/Emoji";
 
-const WhatTheFuckToCallThisComponent = ({ title }: { title: string }) => {
+type ChatGptGeneratedTextProps = {
+  title: string;
+};
+
+const ChatGptGeneratedText = ({ title }: ChatGptGeneratedTextProps) => {
   const { data, error, isLoading } = useChatGptEndpoint({ input: title });
 
   if (isLoading) {
@@ -14,9 +19,9 @@ const WhatTheFuckToCallThisComponent = ({ title }: { title: string }) => {
   return (
     <div className="flex flex-col justify-center items-center gap-y-6">
       <p className="text-5xl text-gray-100">{title}</p>
-      <span className="text-7xl ">{data}</span>
+      <Emoji data={data} />
     </div>
   );
 };
 
-export default WhatTheFuckToCallThisComponent;
+export default ChatGptGeneratedText;
