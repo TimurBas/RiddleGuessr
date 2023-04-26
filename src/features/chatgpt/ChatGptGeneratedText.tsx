@@ -1,6 +1,8 @@
 import React from "react";
 import useChatGptEndpoint from "../../hooks/useChatGptEndpoint";
 import Emoji from "../../components/Emoji";
+import handleNull from "../../utils/nullUtil";
+import handleEmptyString from "../../utils/stringUtil";
 
 type ChatGptGeneratedTextProps = {
   title: string;
@@ -8,6 +10,8 @@ type ChatGptGeneratedTextProps = {
 
 const ChatGptGeneratedText = ({ title }: ChatGptGeneratedTextProps) => {
   const { data, error, isLoading } = useChatGptEndpoint({ input: title });
+
+  const resolvedData = handleNull(data, () => "");
 
   if (isLoading) {
     return <p>Loading...</p>;
