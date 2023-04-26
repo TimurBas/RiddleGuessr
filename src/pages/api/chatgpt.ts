@@ -18,7 +18,6 @@ export default async function handler(
   try {
     const input = req.body;
     const prompt = `Convert the movie ${input} into a sequence of 4 emojis.`;
-    console.log(prompt);
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [

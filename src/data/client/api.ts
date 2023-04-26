@@ -27,7 +27,9 @@ const GetChatGptAnswer = async (input: string): Promise<ChatGptResponse> => {
   return answer;
 };
 
-const GetStabilityAnswer = async (input: string) => {
+const GetStabilityAnswer = async (
+  input: string
+): Promise<StabilityResponse> => {
   const completeUrl = `${baseUrl}/api/stability`;
   const options: RequestInit = {
     method: "POST",
