@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { GetChatGptAnswer } from "../data/client/api";
+import { handleNullOrEmptyString } from "../utils/nullUtil";
+import throwErrorOnEmptyString from "../utils/stringUtil";
 
 type Props = {
   input: string;

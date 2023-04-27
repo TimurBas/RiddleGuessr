@@ -1,23 +1,36 @@
 import { useState, useEffect } from "react";
 import { GetStabilityAnswer } from "../data/client/api";
+import { throwErrorOnEmptyList } from "../utils/listUtil";
 
 type Props = {
   input: string;
 };
 
-export default function useStabilityEndpoint({ input }: Props): string[] {
-  const [base64Images, setBase64Images] = useState<string[]>([]);
+type Response<Data> = {
+  data: Data;
+  error: Error | null;
+  isLoading: boolean;
+};
+
+export default function useStabilityEndpoint({ input }: Props): Response<string[]> {
+  const [data, setData] = useState<string[]>([]);
+  const [error, setError] = useState<Error | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await GetStabilityAnswer(input);
-      const base64List = response.base64List;
-
-      setBase64Images(base64List);
+      try {
+        const response = await GetStabilityAnswer(input);
+        const base64List = response.base64List;
+        setData(base64List);
+      } catch (error) {
+        setError(error as Error);
+      } finally {
+        setIsLoading(false);
+      }
     };
-
     fetchData();
   }, []);
 
-  return base64Images;
+  return { data, error, isLoading };
 }

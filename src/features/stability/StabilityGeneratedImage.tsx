@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import useStabilityEndpoint from "../../hooks/useStabilityEndpoint";
 import Base64Image from "../../components/Base64Image";
 
@@ -6,12 +6,22 @@ type StabilityGeneratedImageProps = {
   title: string;
 };
 
-const StabilityGeneratedImage = ({ title }: StabilityGeneratedImageProps) => {
-  const base64Images = useStabilityEndpoint({ input: title });
+const StabilityGeneratedImage: FC<StabilityGeneratedImageProps> = ({
+  title,
+}: StabilityGeneratedImageProps) => {
+  const { data, error, isLoading } = useStabilityEndpoint({ input: title });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <div>
-      {base64Images.map((base64Image, index) => (
+      {data.map((base64Image, index) => (
         <Base64Image key={index} base64Image={base64Image} />
       ))}
     </div>
