@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import useStabilityEndpoint from "../../hooks/useStabilityEndpoint";
-import Base64Image from "../../components/Base64Image";
+import useStabilityEndpoint from "../../../hooks/useStabilityEndpoint";
+import Base64Image from "../../Base64Image";
 
 type StabilityGeneratedImageProps = {
   title: string;
