@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { GetStabilityAnswer } from "../data/client/api";
-import { throwErrorOnEmptyList } from "../utils/listUtil";
 
 type Props = {
   input: string;
@@ -12,7 +11,9 @@ type Response<Data> = {
   isLoading: boolean;
 };
 
-export default function useStabilityEndpoint({ input }: Props): Response<string[]> {
+export default function useStabilityEndpoint({
+  input,
+}: Props): Response<string[]> {
   const [data, setData] = useState<string[]>([]);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
