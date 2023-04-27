@@ -1,5 +1,5 @@
-import ChatGptGeneratedText from "../features/chatgpt/ChatGptGeneratedText";
-import StabilityGeneratedImage from "../features/stability/StabilityGeneratedImage";
+import ChatGptGeneratedText from "../components/features/chatgpt/ChatGptGeneratedText";
+import StabilityGeneratedImage from "../components/features/stability/StabilityGeneratedImage";
 import movieTitles from "../data/json/movie-titles.json";
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import useChatGptEndpoint from "../../hooks/useChatGptEndpoint";
-import Emoji from "../../components/Emoji";
+import useChatGptEndpoint from "../../../hooks/useChatGptEndpoint";
+import Emoji from "../../ui/Emoji";
 
 type ChatGptGeneratedTextProps = {
   title: string;
