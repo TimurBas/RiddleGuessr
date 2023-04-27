@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type Base64ImageProps = {
@@ -6,7 +7,12 @@ type Base64ImageProps = {
 
 const Base64Image = ({ base64Image }: Base64ImageProps) => {
   return (
-    <img src={`data:image/png;base64,${base64Image}`} className="w-48 h-48" />
+    <Image
+      src={`data:image/png;base64,${base64Image}`}
+      alt="AI Generated Image"
+      height="192px"
+      width="192px"
+    />
   );
 };
 
