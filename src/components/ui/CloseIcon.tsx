@@ -8,7 +8,7 @@ const CloseIcon = ({ onToggle }: Props) => {
   return (
     <svg
       onClick={onToggle}
-      className="h-6 w-6 fill-current hover:bg-red-600 hover:cursor-pointer"
+      className="h-6 w-6 fill-current text-white hover:bg-red-600 hover:cursor-pointer"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >

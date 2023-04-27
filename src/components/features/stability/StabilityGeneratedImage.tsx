@@ -12,11 +12,11 @@ const StabilityGeneratedImage: FC<StabilityGeneratedImageProps> = ({
   const { data, error, isLoading } = useStabilityEndpoint({ input: title });
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="text-white">Loading...</p>;
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <p className="text-white">Error: {error.message}</p>;
   }
 
   return (
