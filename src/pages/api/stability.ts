@@ -17,7 +17,6 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   try {
-    console.log("STABILITY");
     const input = req.body;
     const apiKey = process.env.STABILITY_API_KEY;
     if (!apiKey) throw new Error("Missing Stability API key.");

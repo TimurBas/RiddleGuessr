@@ -1,3 +1,7 @@
+import { throwErrorOnEmptyList } from "../../utils/listUtil";
+import { handleNullOrEmptyString } from "../../utils/nullUtil";
+import throwErrorOnEmptyString from "../../utils/stringUtil";
+
 type ChatGptResponse = {
   answer: string;
 };
@@ -21,10 +25,12 @@ const GetChatGptAnswer = async (input: string): Promise<ChatGptResponse> => {
   };
 
   const response = await fetch(completeUrl, options);
-  const json = await response.json();
+  const json: ChatGptResponse = await response.json();
 
-  const answer = json as ChatGptResponse;
-  return answer;
+  const resolvedAnswer = handleNullOrEmptyString(json.answer);
+  throwErrorOnEmptyString(resolvedAnswer)
+
+  return { answer: resolvedAnswer };
 };
 
 const GetStabilityAnswer = async (
@@ -40,10 +46,11 @@ const GetStabilityAnswer = async (
   };
 
   const response = await fetch(completeUrl, options);
-  const json = await response.json();
+  const json: StabilityResponse = await response.json();
 
-  const base64List = json as StabilityResponse;
-  return base64List;
+  throwErrorOnEmptyList(json.base64List);
+
+  return json;
 };
 
 export { GetChatGptAnswer, GetStabilityAnswer };
