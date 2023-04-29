@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import HomeLogoContent from "../../ui/HomeLogo/HomeLogoContent";
 import HamburgerMenu from "../../ui/Hamburger/HamburgerMenu";
+import HeaderLinks from "../../ui/HeaderLinks";
 
 interface MenuItem {
   label: string;
@@ -21,7 +22,7 @@ const HeaderSection: FC = () => {
   ];
 
   return (
-    <header className="flex items-center justify-between flex-grow">
+    <header className="flex items-center justify-between flex-grow lg:items-start lg:justify-start lg:">
       <>
         <HomeLogoContent />
         <HamburgerMenu
@@ -29,6 +30,7 @@ const HeaderSection: FC = () => {
           isOpen={isOpen}
           onToggle={toggleMenu}
         />
+        <HeaderLinks menuItems={menuItems} />
       </>
     </header>
   );
