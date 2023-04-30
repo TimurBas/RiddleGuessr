@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-const HamburgerMenuIcon = () => {
+const HamburgerMenuIcon: FC = () => {
   return (
     <svg
       className="h-6 w-6 fill-current"
