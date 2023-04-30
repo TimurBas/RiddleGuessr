@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import StandardLink from "../ui/atomic/StandardLink";
 import ButtonLink from "../ui/composite/link/ButtonLink";
+import StandardLink from "../ui/atomic/StandardLink";
 
 interface Link {
   label: string;
@@ -9,8 +9,9 @@ interface Link {
 
 const NavigationLinks: FC = () => {
   const menuItems: Link[] = [
-    { label: "Home", link: "/" },
-    { label: "About", link: "/about" },
+    { label: "Use cases", link: "/use-cases" },
+    { label: "Pricing", link: "/pricing" },
+    { label: "Community", link: "/community" },
     { label: "Contact", link: "/contact" },
   ];
 
@@ -20,7 +21,7 @@ const NavigationLinks: FC = () => {
   ];
 
   return (
-    <div className="hidden lg:flex w-full">
+    <div className="hidden lg:flex items-center justify-center w-full">
       {menuItems.map((item) => (
         <StandardLink key={item.label} label={item.label} link={item.link} />
       ))}
@@ -39,6 +40,7 @@ const NavigationLinks: FC = () => {
               label={item.label}
               link={item.link}
               textColor="text-white"
+              height="h-8"
             />
           )
         )}

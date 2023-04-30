@@ -5,7 +5,7 @@ import NavigationLinks from "../../ui-smart/NavigationLinks";
 
 const HeaderSection: FC = () => {
   return (
-    <header className="flex items-center justify-between flex-grow lg:mx-24 lg:gap-x-8">
+    <header className="flex items-center justify-between flex-grow lg:mx-48 lg:gap-x-8">
       <HomeLogoContent />
       <HamburgerMenu />
       <NavigationLinks />

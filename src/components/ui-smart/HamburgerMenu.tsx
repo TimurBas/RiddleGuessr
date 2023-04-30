@@ -9,8 +9,9 @@ interface Link {
 
 const HamburgerMenu: FC = () => {
   const menuItems: Link[] = [
-    { label: "Home", link: "/" },
-    { label: "About", link: "/about" },
+    { label: "Use cases", link: "/use-cases" },
+    { label: "Pricing", link: "/pricing" },
+    { label: "Community", link: "/community" },
     { label: "Contact", link: "/contact" },
   ];
 
