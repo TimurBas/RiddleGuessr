@@ -4,7 +4,7 @@ import HomeLogoIcon from "../../atomic/icons/HomeLogoIcon";
 const HomeLogoContent: FC = () => {
   return (
     <a href="/">
-      <div className="flex items-center justify-center text-white hover:text-gray-300 w-max select-none">
+      <div className="flex items-center justify-center w-max text-white select-none">
         <HomeLogoIcon />
         <h1 className="text-lg font-bold">Project-1</h1>
       </div>

@@ -27,10 +27,16 @@ const HamburgerMenuContent: FC<Props> = ({ menuItems, loginItems }: Props) => {
               key={item.label}
               label={item.label}
               link={item.link}
-              color="bg-gray-500"
+              bgColor="bg-gray-500"
+              textColor="text-white"
             />
           ) : (
-            <ButtonLink key={item.label} label={item.label} link={item.link} />
+            <ButtonLink
+              key={item.label}
+              label={item.label}
+              link={item.link}
+              textColor="text-white"
+            />
           )
         )}
       </div>

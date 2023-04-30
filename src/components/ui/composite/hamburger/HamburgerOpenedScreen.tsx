@@ -19,7 +19,7 @@ const HamburgerOpenedScreen: FC<Props> = ({
   onToggle,
 }: Props) => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full z-10 bg-zinc-800">
+    <div className="fixed top-0 left-0 w-full h-full z-10 bg-darkerPrimary">
       <div className="fixed right-0 top-0 pt-7 pr-5">
         <CloseIcon onToggle={onToggle} />
       </div>

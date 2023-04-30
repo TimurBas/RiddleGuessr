@@ -9,14 +9,14 @@ export default function Home() {
   const title = movieTitleObj.title;
 
   return (
-    <main className="bg-blue-900 w-screen min-h-screen ">
+    <main className="bg-primary w-screen min-h-screen ">
       <div className="flex p-5">
         <HeaderSection />
       </div>
-      <div className="flex flex-col gap-y-20 items-center justify-center">
+      {/* <div className="flex flex-col gap-y-20 items-center justify-center">
         <ChatGptGeneratedText title={title} />
         <StabilityGeneratedImage title={title} />
-      </div>
+      </div> */}
     </main>
   );
 }
