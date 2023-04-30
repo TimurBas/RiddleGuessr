@@ -4,6 +4,10 @@
 
 # 28/04/2023
 
-- Implement header for large screen and above
+- ~~Implement header for large screen and above~~
 - Look into refactor of components used in the features: _ChatGptGeneratedText_ and _StabilityGeneratedImage_
 - Probably should look at how we pass stuff around in the ui folder for the components in _Hamburger_ and _HomeLogo_
+
+# 30/04/2023
+
+- General theming
