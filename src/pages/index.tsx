@@ -13,10 +13,10 @@ export default function Home() {
       <div className="flex p-5">
         <HeaderSection />
       </div>
-      {/* <div className="flex flex-col gap-y-20 items-center justify-center">
+      <div className="flex flex-col gap-y-20 items-center justify-center">
         <ChatGptGeneratedText title={title} />
         <StabilityGeneratedImage title={title} />
-      </div> */}
+      </div>
     </main>
   );
 }
