@@ -11,3 +11,4 @@
 # 30/04/2023
 
 - General theming
+- Hero Section

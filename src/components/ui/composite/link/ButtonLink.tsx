@@ -6,12 +6,22 @@ interface Props {
   link: string;
   bgColor?: string;
   textColor?: string;
+  height?: string;
 }
 
-const ButtonLink: FC<Props> = ({ label, link, bgColor, textColor }: Props) => {
+const ButtonLink: FC<Props> = ({
+  label,
+  link,
+  bgColor,
+  textColor,
+  height,
+}: Props) => {
   return (
     <button
-      className={`rounded-md px-1 h-8 ${bgColor ? bgColor : "bg-sky-500"}`}
+      className={`w-full px-4 font-medium rounded-md md:w-max ${
+        bgColor ? bgColor : "bg-sky-500"
+      }
+      ${height ? height : "h-12 "}`}
     >
       <StandardLink label={label} link={link} textColor={textColor} />
     </button>
