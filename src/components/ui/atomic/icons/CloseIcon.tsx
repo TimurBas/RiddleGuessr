@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
 interface Props {
   onToggle: () => void;
 }
 
-const CloseIcon = ({ onToggle }: Props) => {
+const CloseIcon: FC<Props> = ({ onToggle }: Props) => {
   return (
     <svg
       onClick={onToggle}

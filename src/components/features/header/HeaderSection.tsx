@@ -1,35 +1,14 @@
-import React, { FC, useState } from "react";
-import HomeLogoContent from "../../ui/HomeLogo/HomeLogoContent";
-import HamburgerMenu from "../../ui/Hamburger/HamburgerMenu";
-
-interface MenuItem {
-  label: string;
-  link: string;
-}
+import React, { FC } from "react";
+import HomeLogoContent from "../../ui/composite/home-logo/HomeLogoContent";
+import HamburgerMenu from "../../ui-smart/HamburgerMenu";
+import NavigationLinks from "../../ui-smart/NavigationLinks";
 
 const HeaderSection: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const menuItems: MenuItem[] = [
-    { label: "Home", link: "/" },
-    { label: "About", link: "/about" },
-    { label: "Contact", link: "/contact" },
-  ];
-
   return (
-    <header className="flex items-center justify-between flex-grow">
-      <>
-        <HomeLogoContent />
-        <HamburgerMenu
-          menuItems={menuItems}
-          isOpen={isOpen}
-          onToggle={toggleMenu}
-        />
-      </>
+    <header className="flex items-center justify-between flex-grow lg:mx-24 lg:gap-x-8">
+      <HomeLogoContent />
+      <HamburgerMenu />
+      <NavigationLinks />
     </header>
   );
 };

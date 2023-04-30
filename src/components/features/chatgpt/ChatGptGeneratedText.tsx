@@ -1,13 +1,11 @@
 import React, { FC } from "react";
 import useChatGptEndpoint from "../../../hooks/useChatGptEndpoint";
-import Emoji from "../../ui/Emoji";
+import Emoji from "../../ui/atomic/Emoji";
 
-type ChatGptGeneratedTextProps = {
+type Props = {
   title: string;
 };
-const ChatGptGeneratedText: FC<ChatGptGeneratedTextProps> = ({
-  title,
-}: ChatGptGeneratedTextProps) => {
+const ChatGptGeneratedText: FC<Props> = ({ title }: Props) => {
   const { data, error, isLoading } = useChatGptEndpoint({ input: title });
 
   if (isLoading) {

@@ -1,11 +1,11 @@
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 
-type Base64ImageProps = {
+type Props = {
   base64Image: string;
 };
 
-const Base64Image = ({ base64Image }: Base64ImageProps) => {
+const Base64Image: FC<Props> = ({ base64Image }: Props) => {
   return (
     <Image
       src={`data:image/png;base64,${base64Image}`}

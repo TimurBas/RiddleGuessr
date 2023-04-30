@@ -1,14 +1,12 @@
 import React, { FC } from "react";
 import useStabilityEndpoint from "../../../hooks/useStabilityEndpoint";
-import Base64Image from "../../ui/Base64Image";
+import Base64Image from "../../ui/atomic/images/Base64Image";
 
-type StabilityGeneratedImageProps = {
+type Props = {
   title: string;
 };
 
-const StabilityGeneratedImage: FC<StabilityGeneratedImageProps> = ({
-  title,
-}: StabilityGeneratedImageProps) => {
+const StabilityGeneratedImage: FC<Props> = ({ title }: Props) => {
   const { data, error, isLoading } = useStabilityEndpoint({ input: title });
 
   if (isLoading) {
