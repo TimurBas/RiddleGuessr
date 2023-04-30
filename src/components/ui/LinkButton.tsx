@@ -10,7 +10,7 @@ const LinkButton = ({ label, link }: LinkButtonProps) => {
     <a
       key={label}
       href={link}
-      className="flex items-start pl-3 pr-4 py-2 font-medium text-white text-xl select-none hover:text-gray-300"
+      className="flex items-start pl-3 pr-4 py-2 font-medium text-white text-xl select-none hover:text-gray-300 lg:text-base"
     >
       {label}
     </a>

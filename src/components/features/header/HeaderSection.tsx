@@ -22,7 +22,7 @@ const HeaderSection: FC = () => {
   ];
 
   return (
-    <header className="flex items-center justify-between flex-grow lg:items-start lg:justify-start lg:">
+    <header className="flex items-center justify-between flex-grow lg:items-center lg:justify-start lg:mx-12 lg:gap-x-8">
       <>
         <HomeLogoContent />
         <HamburgerMenu
