@@ -8,7 +8,7 @@ interface Props {
 const HamburgerButton: FC<Props> = ({ onToggle }: Props) => {
   return (
     <button
-      className="text-white hover:text-gray-300 focus:outline-none"
+      className="text-darkerGray hover:text-white focus:outline-none"
       onClick={onToggle}
     >
       <HamburgerMenuIcon />

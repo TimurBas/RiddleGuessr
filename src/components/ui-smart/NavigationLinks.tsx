@@ -31,9 +31,15 @@ const NavigationLinks: FC = () => {
               key={item.label}
               label={item.label}
               link={item.link}
+              textColor="text-white"
             />
           ) : (
-            <ButtonLink key={item.label} label={item.label} link={item.link} />
+            <ButtonLink
+              key={item.label}
+              label={item.label}
+              link={item.link}
+              textColor="text-white"
+            />
           )
         )}
       </div>

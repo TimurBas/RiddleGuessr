@@ -9,7 +9,7 @@ export default function Home() {
   const title = movieTitleObj.title;
 
   return (
-    <main className="bg-blue-900 w-screen min-h-screen ">
+    <main className="bg-primary w-screen min-h-screen ">
       <div className="flex p-5">
         <HeaderSection />
       </div>
