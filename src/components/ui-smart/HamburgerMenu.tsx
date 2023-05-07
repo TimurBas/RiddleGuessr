@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FC, useState } from "react";
 import HamburgerButton from "../ui/composite/hamburger/HamburgerButton";
 import HamburgerOpenedScreen from "../ui/composite/hamburger/HamburgerOpenedScreen";

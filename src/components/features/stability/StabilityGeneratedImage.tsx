@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FC } from "react";
 import useStabilityEndpoint from "../../../hooks/useStabilityEndpoint";
 import Base64Image from "../../ui/atomic/images/Base64Image";

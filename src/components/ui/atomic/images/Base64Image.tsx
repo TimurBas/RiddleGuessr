@@ -10,8 +10,8 @@ const Base64Image: FC<Props> = ({ base64Image }: Props) => {
     <Image
       src={`data:image/png;base64,${base64Image}`}
       alt="AI Generated Image"
-      height="192px"
-      width="192px"
+      width={192}
+      height={192}
     />
   );
 };

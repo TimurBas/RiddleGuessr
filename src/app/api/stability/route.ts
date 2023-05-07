@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
 type GenerationResponse = {
   artifacts: Array<{
@@ -8,16 +8,9 @@ type GenerationResponse = {
   }>;
 };
 
-type Data = {
-  base64List: string[];
-};
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export async function POST(request: Request) {
   try {
-    const input = req.body;
+    const input = await request.json();
     const apiKey = process.env.STABILITY_API_KEY;
     if (!apiKey) throw new Error("Missing Stability API key.");
 
@@ -53,7 +46,7 @@ export default async function handler(
     const json = (await response.json()) as GenerationResponse;
     const base64List = json.artifacts.map((artifact) => artifact.base64);
 
-    res.status(200).json({ base64List });
+    return NextResponse.json({ base64List });
   } catch (error: any) {
     if (error.response) {
       console.log(error.response.status);

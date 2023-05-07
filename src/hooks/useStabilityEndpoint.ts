@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { GetStabilityAnswer } from "../data/client/api";
 
