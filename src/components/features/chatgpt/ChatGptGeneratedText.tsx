@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FC } from "react";
 import useChatGptEndpoint from "../../../hooks/useChatGptEndpoint";
 import Emoji from "../../ui/atomic/Emoji";

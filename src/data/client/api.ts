@@ -28,7 +28,7 @@ const GetChatGptAnswer = async (input: string): Promise<ChatGptResponse> => {
   const json: ChatGptResponse = await response.json();
 
   const resolvedAnswer = handleNullOrEmptyString(json.answer);
-  throwErrorOnEmptyString(resolvedAnswer)
+  throwErrorOnEmptyString(resolvedAnswer);
 
   return { answer: resolvedAnswer };
 };

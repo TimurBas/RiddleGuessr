@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
@@ -7,16 +7,9 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-type Data = {
-  answer: string;
-};
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export async function POST(request: Request) {
   try {
-    const input = req.body;
+    const input = request.body;
     const prompt = `Convert the movie ${input} into a sequence of 4 emojis.`;
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -27,9 +20,11 @@ export default async function handler(
         },
       ],
     });
+
     const choices = completion.data.choices;
     const message = choices[0].message!;
-    res.status(200).json({ answer: message.content });
+
+    return NextResponse.json({ answer: message.content });
   } catch (error: any) {
     if (error.response) {
       console.log(error.response.status);

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { GetChatGptAnswer } from "../data/client/api";
 
