@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 import StandardLink from "../ui/atomic/StandardLink";
+import Link from "next/link";
+import HomeLogoIcon from "../ui/atomic/icons/HomeLogoIcon";
 
 interface Link {
   label: string;
@@ -23,10 +25,15 @@ const socialMediaItems: Link[] = [
   { label: "Facebook", link: "facebook.com/project-1" },
 ];
 
-const FooterLinks: FC = () => {
+const FooterNavigationLinks: FC = () => {
   return (
-    <div className="grid grid-cols-3 place-items-center gap-10 ">
-      <div className="flex flex-col items-start  h-48">
+    <div className="grid grid-cols-4 place-items-center gap-x-24 md:gap-x-5">
+      <div className="h-48 pt-2">
+        <Link href="/" className="h-10 text-white">
+          <HomeLogoIcon />
+        </Link>
+      </div>
+      <div className="flex flex-col items-start h-48 text-sm lg:text-base">
         {menuItems.map((item) => (
           <StandardLink
             key={item.label}
@@ -36,7 +43,7 @@ const FooterLinks: FC = () => {
           />
         ))}
       </div>
-      <div className="flex flex-col items-start  h-48">
+      <div className="flex flex-col items-start h-48 text-sm lg:text-base">
         {loginItems.map((item) => (
           <StandardLink
             key={item.label}
@@ -46,7 +53,7 @@ const FooterLinks: FC = () => {
           />
         ))}
       </div>
-      <div className="flex flex-col items-start h-48">
+      <div className="flex flex-col items-start h-48 text-sm lg:text-base">
         {socialMediaItems.map((item) => (
           <StandardLink
             key={item.label}
@@ -60,4 +67,4 @@ const FooterLinks: FC = () => {
   );
 };
 
-export default FooterLinks;
+export default FooterNavigationLinks;
