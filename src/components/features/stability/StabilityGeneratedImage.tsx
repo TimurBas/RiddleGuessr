@@ -1,8 +1,8 @@
 "use client";
 
+import Base64Image from "@/components/ui/atomic/images/Base64Image";
+import useStabilityEndpoint from "@/hooks/useStabilityEndpoint";
 import React, { FC } from "react";
-import useStabilityEndpoint from "../../../hooks/useStabilityEndpoint";
-import Base64Image from "../../ui/atomic/images/Base64Image";
 
 type Props = {
   title: string;

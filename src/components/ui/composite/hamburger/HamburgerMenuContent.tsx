@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import ButtonLink from "../link/ButtonLink";
-import StandardLink from "../../atomic/StandardLink";
 import Divider from "../../atomic/Divider";
+import StandardLink from "../../atomic/StandardLink";
+import ButtonLink from "../link/ButtonLink";
 
 interface MenuItem {
   label: string;
