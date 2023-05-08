@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true
   },
   reactStrictMode: false,
-   async headers() {
+  async headers() {
     return [
       {
         // matching all API routes

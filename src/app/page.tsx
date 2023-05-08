@@ -4,6 +4,7 @@ import StabilityGeneratedImage from "../components/features/stability/StabilityG
 import movieTitles from "../data/json/movie-titles.json";
 import HeroSection from "../components/features/hero/HeroSection";
 import TopBar from "../components/ui/atomic/top-bar/TopBar";
+import FooterSection from "@/components/features/footer/FooterSection";
 
 export default function Home() {
   const randomIndex = Math.floor(Math.random() * movieTitles.length);
@@ -21,9 +22,10 @@ export default function Home() {
           <HeroSection />
         </div>
         <div className="flex flex-col gap-y-20 items-center justify-center pt-24">
-          <ChatGptGeneratedText title={title} />
-          <StabilityGeneratedImage title={title} />
+          {/* <ChatGptGeneratedText title={title} />
+          <StabilityGeneratedImage title={title} /> */}
         </div>
+        <FooterSection />
       </main>
     </>
   );
