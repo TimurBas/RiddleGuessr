@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import StandardLink from "../ui/atomic/StandardLink";
 import Link from "next/link";
 import HomeLogoIcon from "../ui/atomic/icons/HomeLogoIcon";
+import StandardLink from "../ui/atomic/StandardLink";
 
 interface Link {
   label: string;

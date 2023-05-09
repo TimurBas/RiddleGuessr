@@ -1,4 +1,7 @@
 import "../styles/globals.css";
+import FooterSection from "@/components/features/footer/FooterSection";
+import HeaderSection from "@/components/features/header/HeaderSection";
+import TopBar from "@/components/ui/atomic/top-bar/TopBar";
 
 export const metadata = {
   title: "Project-1",
@@ -12,7 +15,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-primary`}>{children}</body>
+      <body className={`bg-primary`}>
+        <TopBar />
+        <div className="flex flex-col p-5">
+          <HeaderSection />
+        </div>
+        {children}
+        <FooterSection />
+      </body>
     </html>
   );
 }

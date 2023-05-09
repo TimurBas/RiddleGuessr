@@ -1,7 +1,7 @@
+import HamburgerMenu from "@/components/ui-smart/HamburgerMenu";
+import NavigationLinks from "@/components/ui-smart/NavigationLinks";
+import HomeLogoContent from "@/components/ui/composite/home-logo/HomeLogoContent";
 import React, { FC } from "react";
-import HomeLogoContent from "../../ui/composite/home-logo/HomeLogoContent";
-import HamburgerMenu from "../../ui-smart/HamburgerMenu";
-import NavigationLinks from "../../ui-smart/NavigationLinks";
 
 const HeaderSection: FC = () => {
   return (

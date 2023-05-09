@@ -1,7 +1,7 @@
+import HeroHeading from "@/components/ui/atomic/hero/HeroHeading";
+import HeroSubHeading from "@/components/ui/atomic/hero/HeroSubHeading";
+import ButtonLink from "@/components/ui/composite/link/ButtonLink";
 import React, { FC } from "react";
-import HeroHeading from "../../ui/atomic/hero/HeroHeading";
-import HeroSubHeading from "../../ui/atomic/hero/HeroSubHeading";
-import ButtonLink from "../../ui/composite/link/ButtonLink";
 
 const HeroSection: FC = () => {
   return (
