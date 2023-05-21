@@ -1,8 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    appDir: true
-  },
+module.exports = {
   transpilePackages: ["ui"],
   reactStrictMode: false,
   async headers() {
@@ -21,4 +17,3 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
