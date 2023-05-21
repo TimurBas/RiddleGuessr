@@ -7,7 +7,7 @@ export default function Home() {
   const randomIndex = Math.floor(Math.random() * movieTitles.length);
   const movieTitleObj = movieTitles[randomIndex];
   const title = movieTitleObj.title;
-  const test = 2;
+
   return (
     <>
       <div className="flex-col justify-between">
