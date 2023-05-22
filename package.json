@@ -17,7 +17,7 @@
     "turbo": "^1.9.7"
   },
   "name": "project-1",
-  "packageManager": "npm@9.6.7",
+  "packageManager": "pnpm@7.15.0",
   "workspaces": [
     "apps/*",
     "packages/*"
