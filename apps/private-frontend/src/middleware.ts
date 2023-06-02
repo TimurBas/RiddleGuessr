@@ -21,7 +21,10 @@ export async function middleware(req: NextRequest) {
       );
     } else if (publicFrontendVercelEnvironment === "preview") {
       return NextResponse.redirect(
-        `public-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF}-timurbas.vercel.app`
+        `https://public-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
+          "/",
+          "-"
+        )}-timurbas.vercel.app`
       );
     } else {
       return NextResponse.redirect(
