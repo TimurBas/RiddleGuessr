@@ -18,7 +18,7 @@ const ButtonLink: FC<Props> = ({
 }: Props) => {
   return (
     <button
-      className={`w-full px-4 font-medium rounded-md md:w-max ${
+      className={`w-full rounded-md px-4 font-medium md:w-max ${
         bgColor ? bgColor : "bg-sky-500"
       }
       ${height ? height : "h-12 "}`}

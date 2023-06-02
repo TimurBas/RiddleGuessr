@@ -5,7 +5,7 @@ import { Button, Header } from "ui";
 export default function Page() {
   return (
     <>
-      <Header text="Webs" />
+      <Header text="asdasdsa" />
       <Button />
     </>
   );

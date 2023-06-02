@@ -1,42 +1,46 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useSupabase } from "../../supabase/useSupabase";
-import useIsAuthenticated from "../../supabase/useIsAuthenticated";
+import InputField from "../ui/atomic/input/InputField";
 import { redirect } from "next/navigation";
 import { RedirectType } from "next/dist/client/components/redirect";
 
 const LoginForm: FC = () => {
   const { supabase } = useSupabase();
-
-  const handleSignUp = async () => {
-    await supabase.auth.signUp({
-      email: "timurbas1@hotmail.com",
-      password: "sup3rs3cur3",
-    });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassowrd] = useState("");
 
   const handleLogin = async () => {
-    await supabase.auth.signInWithPassword({
-      email: "timurbas1@hotmail.com",
-      password: "sup3rs3cur3",
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
     });
-  };
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
   };
 
   return (
-    <div>
-      <button className="text-white" onClick={handleLogin}>
-        Login
-      </button>
-      <button className="text-white" onClick={handleSignUp}>
-        SignUp
-      </button>
-      <button className="text-white" onClick={handleSignOut}>
-        SignOut
+    <div className="flex flex-col items-center justify-center gap-y-3">
+      <h1 className="text-3xl font-semibold text-white">Create an account</h1>
+      <h6 className="text-gray-400">
+        Enter your email and password below to create your account
+      </h6>
+      <InputField
+        value={email}
+        setValue={setEmail}
+        placeholder="name@example.com"
+        type="email"
+      />
+      <InputField
+        value={password}
+        setValue={setPassowrd}
+        placeholder="*******"
+        type="password"
+      />
+      <button
+        className="h-10 rounded-md bg-sky-500 px-4 font-medium text-white"
+        onClick={handleLogin}
+      >
+        Continue
       </button>
     </div>
   );
