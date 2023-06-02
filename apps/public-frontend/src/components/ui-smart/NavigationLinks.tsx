@@ -16,16 +16,19 @@ const NavigationLinks: FC = () => {
   ];
 
   const loginItems: Link[] = [
-    { label: "Login", link: "/login" },
+    {
+      label: "Login",
+      link: process.env.LOCAL_PUBLIC_PRIVATE_FRONTEND_URL_LOGIN,
+    },
     { label: "Sign up", link: "/sign-up" },
   ];
 
   return (
-    <div className="hidden lg:flex items-center justify-center w-full">
+    <div className="hidden w-full items-center justify-center lg:flex">
       {menuItems.map((item) => (
         <StandardLink key={item.label} label={item.label} link={item.link} />
       ))}
-      <div className="flex items-center justify-center ml-auto">
+      <div className="ml-auto flex items-center justify-center">
         {loginItems.map((item) =>
           item.label === "Login" ? (
             <StandardLink

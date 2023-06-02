@@ -16,8 +16,6 @@ export default function useIsAuthenticated() {
 
       const accessToken = session?.access_token || null;
 
-      console.log(accessToken);
-
       const isAuthenticated = accessToken !== undefined && accessToken !== null;
       setIsAuthenticated(isAuthenticated);
     };

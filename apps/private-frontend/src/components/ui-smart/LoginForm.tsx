@@ -3,8 +3,6 @@
 import React, { FC, useState } from "react";
 import { useSupabase } from "../../supabase/useSupabase";
 import InputField from "../ui/atomic/input/InputField";
-import { redirect } from "next/navigation";
-import { RedirectType } from "next/dist/client/components/redirect";
 
 const LoginForm: FC = () => {
   const { supabase } = useSupabase();
