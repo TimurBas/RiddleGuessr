@@ -7,10 +7,8 @@ import { Database } from "supa";
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareSupabaseClient<Database>({ req, res });
-  await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
   return res;
 }
-
-export const config = {
-  matcher: [],
-};
