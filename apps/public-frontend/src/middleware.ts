@@ -13,7 +13,21 @@ export async function middleware(req: NextRequest) {
 
   if (session) {
     console.log("Redirecting to private FE");
-    return NextResponse.redirect("http://localhost:3001");
+    const privateFrontendVercelEnvironment = process.env.NEXT_PUBLIC_VERCEL_ENV;
+
+    if (privateFrontendVercelEnvironment === "production") {
+      return NextResponse.redirect(
+        process.env.PROD_PUBLIC_PRIVATE_FRONTEND_URL
+      );
+    } else if (privateFrontendVercelEnvironment === "preview") {
+      return NextResponse.redirect(
+        `https://public-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF}-timurbas.vercel.app`
+      );
+    } else {
+      return NextResponse.redirect(
+        process.env.LOCAL_PUBLIC_PRIVATE_FRONTEND_URL
+      );
+    }
   }
 }
 
