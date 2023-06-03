@@ -52,9 +52,7 @@ const GetStabilityAnswer = async (
 
 const AuthRedirect = async (): Promise<boolean> => {
   const completeUrl = `${baseUrl}/api/auth`;
-  const response = await fetch(completeUrl, {
-    redirect: "follow",
-  });
+  const response = await fetch(completeUrl);
 
   return response.redirected;
 };

@@ -15,10 +15,16 @@ export async function POST(request: Request) {
   try {
     // const redirectUrl = resolveRedirectUrl();
     // console.log(redirectUrl);
+
+    // Clone the request headers and set a new header `x-hello-from-middleware1`
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-hello-from-middleware1", "hello");
+
     return NextResponse.redirect(
       "https://private-frontend-git-feature-login-with-turborepo-timurbas.vercel.app/",
       {
         status: 301,
+        headers: requestHeaders,
       } as ResponseInit
     );
   } catch (error: any) {
