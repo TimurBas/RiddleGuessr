@@ -10,5 +10,13 @@ export async function middleware(req: NextRequest) {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+
+  if (session)
+    return NextResponse.redirect(new URL("/", "http://localhost:3001"));
+
   return res;
 }
+
+export const config = {
+  matcher: "/login/:path*",
+};

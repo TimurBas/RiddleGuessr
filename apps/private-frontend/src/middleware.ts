@@ -7,6 +7,11 @@ import { Database } from "supa";
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient<Database>({ req, res });
-  await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session)
+    return NextResponse.redirect(new URL("/login", "http://localhost:3000"));
   return res;
 }
