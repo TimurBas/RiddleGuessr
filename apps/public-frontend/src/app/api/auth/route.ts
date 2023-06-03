@@ -11,7 +11,7 @@ import { NextResponse } from "next/server";
 //   return process.env.LOCAL_PRIVATE_FRONTEND_URL;
 // };
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   try {
     // const redirectUrl = resolveRedirectUrl();
     // console.log(redirectUrl);
