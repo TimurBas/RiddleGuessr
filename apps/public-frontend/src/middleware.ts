@@ -4,6 +4,17 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { Database } from "supa";
 
+const resolveRedirectUrl = () => {
+  const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
+  if (env === "production") return process.env.PROD_PRIVATE_FRONTEND_URL;
+  if (env === "preview")
+    `https://private-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
+      "/",
+      "-"
+    )}-timurbas.vercel.app`;
+  return process.env.LOCAL_PRIVATE_FRONTEND_URL;
+};
+
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient<Database>({ req, res });
@@ -11,8 +22,7 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (session)
-    return NextResponse.redirect(new URL("/", "http://localhost:3001"));
+  if (session) return NextResponse.redirect(new URL("/", resolveRedirectUrl()));
 
   return res;
 }
