@@ -15,9 +15,7 @@ export async function GET(request: Request) {
   try {
     // const redirectUrl = resolveRedirectUrl();
     // console.log(redirectUrl);
-    return NextResponse.redirect(
-      "https://private-frontend-git-feature-login-with-turborepo-timurbas.vercel.app/"
-    );
+    return NextResponse.redirect("http://localhost:3001");
   } catch (error: any) {
     if (error.response) {
       console.log(error.response.status);
