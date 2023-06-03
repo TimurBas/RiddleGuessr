@@ -7,22 +7,34 @@ interface Link {
   link: string;
 }
 
+const resolveLoginRedirectUrl = () => {
+  const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
+  if (env === "production")
+    return process.env.PROD_PUBLIC_PRIVATE_FRONTEND_URL_LOGIN;
+  if (env === "preview")
+    `https://private-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
+      "/",
+      "-"
+    )}-timurbas.vercel.app`;
+  return process.env.LOCAL_PUBLIC_PRIVATE_FRONTEND_URL_LOGIN;
+};
+
+const menuItems: Link[] = [
+  { label: "Use cases", link: "/use-cases" },
+  { label: "Pricing", link: "/pricing" },
+  { label: "Community", link: "/community" },
+  { label: "Contact", link: "/contact" },
+];
+
+const loginItems: Link[] = [
+  {
+    label: "Login",
+    link: resolveLoginRedirectUrl(),
+  },
+  { label: "Sign up", link: "/sign-up" },
+];
+
 const NavigationLinks: FC = () => {
-  const menuItems: Link[] = [
-    { label: "Use cases", link: "/use-cases" },
-    { label: "Pricing", link: "/pricing" },
-    { label: "Community", link: "/community" },
-    { label: "Contact", link: "/contact" },
-  ];
-
-  const loginItems: Link[] = [
-    {
-      label: "Login",
-      link: process.env.LOCAL_PUBLIC_PRIVATE_FRONTEND_URL_LOGIN,
-    },
-    { label: "Sign up", link: "/sign-up" },
-  ];
-
   return (
     <div className="hidden w-full items-center justify-center lg:flex">
       {menuItems.map((item) => (
