@@ -1,8 +1,9 @@
 "use client";
 
 import React, { FC, useState } from "react";
-import { useSupabase } from "../../supabase/useSupabase";
 import InputField from "../ui/atomic/input/InputField";
+import { useSupabase } from "../../supabase/useSupabase";
+import { AuthRedirect } from "../../data/client/api";
 
 const LoginForm: FC = () => {
   const { supabase } = useSupabase();
@@ -14,6 +15,13 @@ const LoginForm: FC = () => {
       email: email,
       password: password,
     });
+
+    console.log(error);
+    // console.log(error?.status);
+    // if (error?.status != 307) alert("You fucked up");
+
+    const isRedirected = await AuthRedirect();
+    console.log(isRedirected);
   };
 
   return (

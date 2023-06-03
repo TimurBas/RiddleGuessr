@@ -1,8 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": [
-    "PROD_PRIVATE_FRONTEND_URL_LOGIN",
-    "LOCAL_PRIVATE_FRONTEND_URL_LOGIN",
     "OPENAI_API_KEY",
     "OPENAI_ORGANIZATION_ID",
     "STABILITY_API_KEY",

@@ -1,5 +1,3 @@
-"use client";
-
 import ChatGptGeneratedText from "../components/features/chatgpt/ChatGptGeneratedText";
 import HeroSection from "../components/features/hero/HeroSection";
 import StabilityGeneratedImage from "../components/features/stability/StabilityGeneratedImage";
