@@ -9,7 +9,7 @@ const resolveRedirectUrl = () => {
   const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
   if (env === "production") return process.env.PROD_PRIVATE_FRONTEND_URL;
   if (env === "preview")
-    `https://private-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
+    `https://private-frontend-git-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
       "/",
       "-"
     )}-timurbas.vercel.app`;
