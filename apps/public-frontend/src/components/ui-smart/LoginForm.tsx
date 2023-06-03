@@ -3,8 +3,18 @@
 import React, { FC, useState } from "react";
 import InputField from "../ui/atomic/input/InputField";
 import { useSupabase } from "../../supabase/useSupabase";
-import { AuthRedirect } from "../../data/client/api";
 import { useRouter } from "next/navigation";
+
+const resolveRedirectUrl = () => {
+  const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
+  if (env === "production") return process.env.PROD_PRIVATE_FRONTEND_URL;
+  if (env === "preview")
+    `https://private-frontend-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
+      "/",
+      "-"
+    )}-timurbas.vercel.app`;
+  return process.env.LOCAL_PRIVATE_FRONTEND_URL;
+};
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -21,13 +31,7 @@ const LoginForm: FC = () => {
       password: password,
     });
 
-    console.log(error);
-    // console.log(error?.status);
-    // if (error?.status != 307) alert("You fucked up");
-
-    // const isRedirected = await AuthRedirect();
-    // console.log(isRedirected);
-    if (session) router.push("http://localhost:3001");
+    if (session) router.push(resolveRedirectUrl());
   };
 
   return (
