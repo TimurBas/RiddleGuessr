@@ -20,7 +20,15 @@ export default function SupabaseProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [supabase] = useState(() => createPagesBrowserClient());
+  const [supabase] = useState(() =>
+    createPagesBrowserClient({
+      domain: "riddleguessr.com",
+      maxAge: "100000000",
+      path: "/",
+      sameSite: "Lax",
+      secure: "secure",
+    })
+  );
   const router = useRouter();
 
   useEffect(() => {
