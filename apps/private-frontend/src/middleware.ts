@@ -21,5 +21,11 @@ export async function middleware(req: NextRequest) {
 
   if (!session)
     return NextResponse.redirect(new URL("/login", resolveRedirectUrl()));
+
+  if (session?.user) {
+    res.cookies.delete("sb-czznftpbupwdynazsvoq-auth-token");
+    res.cookies.delete("supabase-auth-token");
+  }
+
   return res;
 }
