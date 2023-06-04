@@ -6,7 +6,7 @@ import { Database } from "supa";
 
 const resolveRedirectUrl = () => {
   const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
-  console.log(env);
+
   if (env === "production") return process.env.PROD_PUBLIC_FRONTEND_URL;
   if (env === "preview")
     return `https://public-frontend-git-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
