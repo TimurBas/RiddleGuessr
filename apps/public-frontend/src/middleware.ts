@@ -7,7 +7,8 @@ import { Database } from "supa";
 const resolveRedirectUrl = () => {
   const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
 
-  if (env === "production") return process.env.PROD_PRIVATE_FRONTEND_URL;
+  if (env === "production")
+    return `https://${process.env.PROD_PRIVATE_FRONTEND_URL}`;
   if (env === "preview")
     return `https://private-frontend-git-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
       "/",
@@ -25,7 +26,7 @@ export async function middleware(req: NextRequest) {
   } = await supabase.auth.getSession();
   const baseUrl = resolveRedirectUrl();
   console.log(baseUrl);
-  if (session) return NextResponse.redirect(new URL("/", `https://${baseUrl}`));
+  if (session) return NextResponse.redirect(new URL("/", baseUrl));
   return res;
 }
 
