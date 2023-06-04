@@ -24,11 +24,12 @@ export default function SupabaseProvider({
     createPagesBrowserClient({
       cookieOptions: {
         domain: "riddleguessr.com",
-        maxAge: "30",
+        maxAge: "3600",
         path: "/",
         sameSite: "Lax",
         secure: "secure",
       },
+      options: {},
     })
   );
   const router = useRouter();
