@@ -22,11 +22,13 @@ export default function SupabaseProvider({
 }) {
   const [supabase] = useState(() =>
     createPagesBrowserClient({
-      domain: "riddleguessr.com",
-      maxAge: "100000000",
-      path: "/",
-      sameSite: "Lax",
-      secure: "secure",
+      cookieOptions: {
+        domain: "riddleguessr.com",
+        maxAge: "100000000",
+        path: "/",
+        sameSite: "Lax",
+        secure: "secure",
+      },
     })
   );
   const router = useRouter();
