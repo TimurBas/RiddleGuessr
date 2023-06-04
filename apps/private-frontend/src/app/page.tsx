@@ -1,9 +1,10 @@
+"use client";
+
 import { Button, Header } from "ui";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { useSupabase } from "../supabase/useSupabase";
 
 export default function Page() {
-  const supabase = createServerComponentClient({ cookies });
+  const { supabase } = useSupabase();
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
