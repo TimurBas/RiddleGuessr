@@ -1,32 +1,34 @@
 "use client";
 
 import React, { FC, useState } from "react";
-import InputField from "../ui/atomic/input/InputField";
 import { useSupabase } from "../../supabase/useSupabase";
-import { AuthRedirect } from "../../data/client/api";
+import InputField from "../ui/atomic/input/InputField";
 
-const LoginForm: FC = () => {
+const SignUpForm: FC = () => {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
 
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     const {
       error,
-      data: { session },
-    } = await supabase.auth.signInWithPassword({
+      data: { user },
+    } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        emailRedirectTo: "https://riddleguessr.com/login",
+      },
     });
 
-    if (session) await AuthRedirect();
+    console.log(user);
   };
 
   return (
     <div className="flex flex-col items-center justify-center gap-y-3">
-      <h1 className="text-3xl font-semibold text-white">Login</h1>
+      <h1 className="text-3xl font-semibold text-white">Create an account</h1>
       <h6 className="text-gray-400">
-        Enter your email and password below to login to your account
+        Enter your email and password below to create your account
       </h6>
       <InputField
         value={email}
@@ -42,7 +44,7 @@ const LoginForm: FC = () => {
       />
       <button
         className="h-10 rounded-md bg-sky-500 px-4 font-medium text-white"
-        onClick={handleLogin}
+        onClick={handleSignUp}
       >
         Continue
       </button>
@@ -50,4 +52,4 @@ const LoginForm: FC = () => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
