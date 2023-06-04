@@ -1,6 +1,7 @@
 import { throwErrorOnEmptyList } from "../../utils/listUtil";
 import { handleNullOrEmptyString } from "../../utils/nullUtil";
 import throwErrorOnEmptyString from "../../utils/stringUtil";
+import { baseUrl } from "../../utils/urlUtil";
 
 type ChatGptResponse = {
   answer: string;
@@ -9,10 +10,6 @@ type ChatGptResponse = {
 type StabilityResponse = {
   base64List: string[];
 };
-
-const httpOrHttps =
-  process.env.NEXT_PUBLIC_VERCEL_URL === "localhost:3000" ? "http" : "https";
-const baseUrl = `${httpOrHttps}://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
 const GetChatGptAnswer = async (input: string): Promise<ChatGptResponse> => {
   const completeUrl = `${baseUrl}/api/chatgpt`;
@@ -53,4 +50,13 @@ const GetStabilityAnswer = async (
   return json;
 };
 
-export { GetChatGptAnswer, GetStabilityAnswer };
+const AuthRedirect = async (): Promise<boolean> => {
+  const completeUrl = `${baseUrl}/api/auth`;
+  const response = await fetch(completeUrl, {
+    redirect: "follow",
+  });
+
+  return response.redirected;
+};
+
+export { GetChatGptAnswer, GetStabilityAnswer, AuthRedirect };

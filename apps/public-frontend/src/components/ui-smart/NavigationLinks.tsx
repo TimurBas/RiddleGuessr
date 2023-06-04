@@ -7,25 +7,28 @@ interface Link {
   link: string;
 }
 
+const menuItems: Link[] = [
+  { label: "Use cases", link: "/use-cases" },
+  { label: "Pricing", link: "/pricing" },
+  { label: "Community", link: "/community" },
+  { label: "Contact", link: "/contact" },
+];
+
+const loginItems: Link[] = [
+  {
+    label: "Login",
+    link: "/login",
+  },
+  { label: "Sign up", link: "/sign-up" },
+];
+
 const NavigationLinks: FC = () => {
-  const menuItems: Link[] = [
-    { label: "Use cases", link: "/use-cases" },
-    { label: "Pricing", link: "/pricing" },
-    { label: "Community", link: "/community" },
-    { label: "Contact", link: "/contact" },
-  ];
-
-  const loginItems: Link[] = [
-    { label: "Login", link: "/login" },
-    { label: "Sign up", link: "/sign-up" },
-  ];
-
   return (
-    <div className="hidden lg:flex items-center justify-center w-full">
+    <div className="hidden w-full items-center justify-center lg:flex">
       {menuItems.map((item) => (
         <StandardLink key={item.label} label={item.label} link={item.link} />
       ))}
-      <div className="flex items-center justify-center ml-auto">
+      <div className="ml-auto flex items-center justify-center">
         {loginItems.map((item) =>
           item.label === "Login" ? (
             <StandardLink
