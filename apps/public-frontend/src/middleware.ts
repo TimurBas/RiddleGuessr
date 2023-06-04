@@ -6,7 +6,7 @@ import { Database } from "supa";
 
 const resolveRedirectUrl = () => {
   const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
-
+  console.log(env);
   if (env === "production")
     return `https://${process.env.PROD_PRIVATE_FRONTEND_URL}`;
   if (env === "preview")
