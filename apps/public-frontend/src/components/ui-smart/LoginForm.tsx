@@ -4,6 +4,7 @@ import React, { FC, useState } from "react";
 import InputField from "../ui/atomic/input/InputField";
 import { useSupabase } from "../../supabase/useSupabase";
 import { useRouter } from "next/navigation";
+import { AuthRedirect } from "../../data/client/api";
 
 const resolveRedirectUrl = () => {
   const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
@@ -31,7 +32,7 @@ const LoginForm: FC = () => {
       password: password,
     });
 
-    if (session) router.push(resolveRedirectUrl());
+    if (session) await AuthRedirect();
   };
 
   return (
