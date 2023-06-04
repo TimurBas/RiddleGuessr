@@ -14,8 +14,8 @@ export default function Home() {
         <HeroSection />
       </div>
       <div className="flex flex-col items-center justify-center gap-y-20 pt-24">
-        {/* <ChatGptGeneratedText title={title} />
-        <StabilityGeneratedImage title={title} /> */}
+        <ChatGptGeneratedText title={title} />
+        <StabilityGeneratedImage title={title} />
       </div>
     </>
   );
