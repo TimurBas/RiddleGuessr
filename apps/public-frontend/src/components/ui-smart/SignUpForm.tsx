@@ -17,7 +17,7 @@ const SignUpForm: FC = () => {
       email: email,
       password: password,
       options: {
-        emailRedirectTo: "https://riddleguessr.com/login",
+        emailRedirectTo: "https://app.riddleguessr.com",
       },
     });
 
