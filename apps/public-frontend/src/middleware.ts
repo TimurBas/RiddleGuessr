@@ -7,14 +7,8 @@ import { Database } from "supa";
 const resolveRedirectUrl = () => {
   const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
 
-  if (env === "production")
-    return `https://${process.env.PROD_PRIVATE_FRONTEND_URL}`;
-  if (env === "preview")
-    return `https://private-frontend-git-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
-      "/",
-      "-"
-    )}-timurbas.vercel.app`;
-
+  if (env === "production") return process.env.PROD_PRIVATE_FRONTEND_URL;
+  if (env === "preview") return process.env.STAGING_PRIVATE_FRONTEND_URL;
   return process.env.LOCAL_PRIVATE_FRONTEND_URL;
 };
 
