@@ -24,7 +24,7 @@ export default function SupabaseProvider({
     createPagesBrowserClient({
       cookieOptions: {
         domain: "riddleguessr.com",
-        maxAge: "100000000",
+        maxAge: "30",
         path: "/",
         sameSite: "Lax",
         secure: "secure",
