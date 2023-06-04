@@ -6,12 +6,7 @@ export async function GET(request: Request) {
 
     if (env === "production")
       return `https://${process.env.PROD_PRIVATE_FRONTEND_URL}`;
-    if (env === "preview")
-      return `https://private-frontend-git-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF.replaceAll(
-        "/",
-        "-"
-      )}-timurbas.vercel.app`;
-
+    if (env === "preview") return "https://staging-app.riddleguesser.com";
     return process.env.LOCAL_PRIVATE_FRONTEND_URL;
   };
 
