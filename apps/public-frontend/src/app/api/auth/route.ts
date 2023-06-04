@@ -6,7 +6,8 @@ export async function GET(request: Request) {
 
     if (env === "production")
       return `https://${process.env.PROD_PRIVATE_FRONTEND_URL}`;
-    if (env === "preview") return "https://staging-app.riddleguesser.com";
+    if (env === "preview")
+      return `https://${process.env.STAGING_PRIVATE_FRONTEND_URL}`;
     return process.env.LOCAL_PRIVATE_FRONTEND_URL;
   };
 
