@@ -1,3 +1,4 @@
+import IdleTimeoutProvider from "../contexts/IdleTimeoutProvider";
 import "../styles/globals.css";
 import SupabaseProvider from "../supabase/supabase-provider";
 
@@ -9,7 +10,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SupabaseProvider>{children}</SupabaseProvider>
+        <SupabaseProvider>
+          <IdleTimeoutProvider>{children}</IdleTimeoutProvider>
+        </SupabaseProvider>
       </body>
     </html>
   );
