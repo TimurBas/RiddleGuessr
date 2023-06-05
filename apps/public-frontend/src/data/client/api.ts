@@ -1,7 +1,7 @@
 import { throwErrorOnEmptyList } from "../../utils/listUtil";
 import { handleNullOrEmptyString } from "../../utils/nullUtil";
 import throwErrorOnEmptyString from "../../utils/stringUtil";
-import { baseUrl } from "../../utils/urlUtil";
+import { resolveBaseUrl } from "../../utils/urlUtil";
 
 type ChatGptResponse = {
   answer: string;
@@ -12,7 +12,7 @@ type StabilityResponse = {
 };
 
 const GetChatGptAnswer = async (input: string): Promise<ChatGptResponse> => {
-  const completeUrl = `${baseUrl}/api/chatgpt`;
+  const completeUrl = `${resolveBaseUrl()}/api/chatgpt`;
   const options: RequestInit = {
     method: "POST",
     headers: {
@@ -33,7 +33,7 @@ const GetChatGptAnswer = async (input: string): Promise<ChatGptResponse> => {
 const GetStabilityAnswer = async (
   input: string
 ): Promise<StabilityResponse> => {
-  const completeUrl = `${baseUrl}/api/stability`;
+  const completeUrl = `${resolveBaseUrl()}/api/stability`;
   const options: RequestInit = {
     method: "POST",
     headers: {
@@ -51,7 +51,7 @@ const GetStabilityAnswer = async (
 };
 
 const AuthRedirect = async (): Promise<boolean> => {
-  const completeUrl = `${baseUrl}/api/auth`;
+  const completeUrl = `${resolveBaseUrl()}/api/auth`;
   const response = await fetch(completeUrl, {
     redirect: "follow",
   });
