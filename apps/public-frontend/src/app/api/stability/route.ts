@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   try {
     const input = await request.json();
     const engineId = "stable-diffusion-v1-5";
-    const apiHost = process.env.API_HOST ?? "https://api.stability.ai";
+    const apiHost = "https://api.stability.ai";
     const apiKey = process.env.STABILITY_API_KEY;
 
     if (!apiKey) throw new Error("Missing Stability API key.");
