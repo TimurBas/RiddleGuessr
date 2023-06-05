@@ -14,9 +14,9 @@ const links: Link[] = [
 
 const FooterSection: FC = () => {
   return (
-    <footer className="ml-14 mr-14 md:ml-28 md:mr-28 lg:ml-48 lg:mr-48">
+    <footer className="left-0 right-0 ml-14 mr-14 pb-16 pt-16 md:ml-28 md:mr-28 lg:ml-48 lg:mr-48">
       <FooterNavigationLinks />
-      <div className="flex flex-row items-center justify-center text-xs gap-x-2">
+      <div className="flex flex-row items-center justify-center gap-x-2 text-xs">
         <p className="text-gray-600">
           Copyright © {new Date().getFullYear()} Project-1 Inc. All rights
           reserved.

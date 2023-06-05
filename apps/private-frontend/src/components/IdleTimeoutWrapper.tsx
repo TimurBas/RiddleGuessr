@@ -14,7 +14,7 @@ const IdleTimeoutWrapper = ({ children }: { children: React.ReactNode }) => {
   }
   return (
     <>
-      <IdleTimeout idleTime={10000} onIdle={() => setIsIdle(true)} />
+      <IdleTimeout idleTime={300000} onIdle={() => setIsIdle(true)} />
       {children}
     </>
   );
