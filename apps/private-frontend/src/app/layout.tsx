@@ -1,4 +1,4 @@
-import IdleTimeoutWrapper from "../hooks/IdleTimeoutWrapper";
+import IdleTimeoutWrapper from "../components/IdleTimeoutWrapper";
 import "../styles/globals.css";
 import SupabaseProvider from "../supabase/supabase-provider";
 
