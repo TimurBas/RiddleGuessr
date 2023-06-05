@@ -1,12 +1,19 @@
 import { useEffect, useRef } from "react";
 
-const IdleTimeout = ({ idleTime, onIdle }) => {
-  const idleTimerRef = useRef(null);
+interface IdleTimeoutProps {
+  idleTime: number;
+  onIdle: () => void;
+}
+
+const IdleTimeout: React.FC<IdleTimeoutProps> = ({ idleTime, onIdle }) => {
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const resetTimer = () => {
-      clearTimeout(idleTimerRef.current);
-      idleTimerRef.current = setTimeout(onIdle, idleTime);
+      if (idleTimerRef.current) {
+        clearTimeout(idleTimerRef.current);
+      }
+      idleTimerRef.current = setTimeout(() => onIdle(), idleTime);
     };
 
     const handleUserActivity = () => {
@@ -22,7 +29,9 @@ const IdleTimeout = ({ idleTime, onIdle }) => {
     resetTimer(); // Start the initial timer
 
     return () => {
-      clearTimeout(idleTimerRef.current);
+      if (idleTimerRef.current) {
+        clearTimeout(idleTimerRef.current);
+      }
       document.removeEventListener("mousemove", handleUserActivity);
       document.removeEventListener("keydown", handleUserActivity);
       document.removeEventListener("mousedown", handleUserActivity);
