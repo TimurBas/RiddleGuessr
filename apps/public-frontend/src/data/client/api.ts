@@ -1,7 +1,7 @@
-import { resolveBaseUrl } from "utils/urlUtil";
+import { resolvePublicBaseUrl } from "utils/urlUtil";
 
 const AuthRedirect = async (): Promise<boolean> => {
-  const completeUrl = `${resolveBaseUrl()}/api/auth`;
+  const completeUrl = `${resolvePublicBaseUrl()}/api/auth`;
   const response = await fetch(completeUrl, {
     redirect: "follow",
   });

@@ -1,6 +1,6 @@
 import { handleNullOrEmptyString, throwErrorOnEmptyList } from "utils";
 import throwErrorOnEmptyString from "utils/stringUtil";
-import { resolveBaseUrl } from "utils/urlUtil";
+import { resolvePrivateBaseUrl } from "utils/urlUtil";
 
 type ChatGptResponse = {
   answer: string;
@@ -13,7 +13,7 @@ type StabilityResponse = {
 export const GetChatGptAnswer = async (
   input: string
 ): Promise<ChatGptResponse> => {
-  const completeUrl = `${resolveBaseUrl()}/api/chatgpt`;
+  const completeUrl = `${resolvePrivateBaseUrl()}/api/chatgpt`;
   const options: RequestInit = {
     method: "POST",
     headers: {
@@ -34,7 +34,7 @@ export const GetChatGptAnswer = async (
 export const GetStabilityAnswer = async (
   input: string
 ): Promise<StabilityResponse> => {
-  const completeUrl = `${resolveBaseUrl()}/api/stability`;
+  const completeUrl = `${resolvePrivateBaseUrl()}/api/stability`;
   const options: RequestInit = {
     method: "POST",
     headers: {
