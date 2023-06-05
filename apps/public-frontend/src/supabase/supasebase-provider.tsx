@@ -29,7 +29,6 @@ export default function SupabaseProvider({
         sameSite: "Lax",
         secure: "secure",
       },
-      options: {},
     })
   );
   const router = useRouter();
@@ -37,7 +36,7 @@ export default function SupabaseProvider({
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(() => {
+    } = supabase.auth.onAuthStateChange((event, session) => {
       router.refresh();
     });
 
