@@ -2,7 +2,7 @@
 
 import React, { FC } from "react";
 import useChatGptEndpoint from "../../../hooks/useChatGptEndpoint";
-import Emoji from "../../ui/atomic/Emoji";
+import Emoji from "../../ui/Emoji";
 
 type Props = {
   title: string;
@@ -19,7 +19,7 @@ const ChatGptGeneratedText: FC<Props> = ({ title }: Props) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center gap-y-10">
+    <div className="flex flex-col items-center justify-center gap-y-10">
       <p className="text-5xl text-gray-100">{title}</p>
       <Emoji data={data} />
     </div>
