@@ -10,6 +10,7 @@ type GenerationResponse = {
 
 export async function POST(request: Request) {
   try {
+    console.log("Hi");
     const input = await request.json();
     const apiKey = process.env.STABILITY_API_KEY;
     if (!apiKey) throw new Error("Missing Stability API key.");
