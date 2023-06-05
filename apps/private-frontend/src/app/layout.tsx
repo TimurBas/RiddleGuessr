@@ -1,4 +1,4 @@
-import IdleTimeoutProvider from "../contexts/IdleTimeoutProvider";
+import IdleTimeoutWrapper from "../hooks/IdleTimeoutWrapper";
 import "../styles/globals.css";
 import SupabaseProvider from "../supabase/supabase-provider";
 
@@ -11,7 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SupabaseProvider>
-          <IdleTimeoutProvider>{children}</IdleTimeoutProvider>
+          <IdleTimeoutWrapper>{children}</IdleTimeoutWrapper>
         </SupabaseProvider>
       </body>
     </html>
