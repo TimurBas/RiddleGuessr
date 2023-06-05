@@ -6,6 +6,8 @@ const AuthRedirect = async (): Promise<boolean> => {
     redirect: "follow",
   });
 
+  console.log(response);
+
   return response.redirected;
 };
 

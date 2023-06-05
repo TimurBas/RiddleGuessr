@@ -1,5 +1,5 @@
-import IdleTimeoutWrapper from "../components/IdleTimeoutWrapper";
 import "../styles/globals.css";
+import IdleTimeoutWrapper from "../components/IdleTimeoutWrapper";
 import SupabaseProvider from "../supabase/supabase-provider";
 
 export default function RootLayout({
@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-primary">
         <SupabaseProvider>
           <IdleTimeoutWrapper>{children}</IdleTimeoutWrapper>
         </SupabaseProvider>
