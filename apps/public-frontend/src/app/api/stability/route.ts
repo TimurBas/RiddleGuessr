@@ -1,21 +1,24 @@
 import { NextResponse } from "next/server";
 
-type GenerationResponse = {
+interface GenerationResponse {
   artifacts: Array<{
     base64: string;
     seed: number;
     finishReason: string;
   }>;
-};
+}
 
 export async function POST(request: Request) {
   try {
     const input = await request.json();
+    const engineId = "stable-diffusion-v1-5";
+    const apiHost = process.env.API_HOST ?? "https://api.stability.ai";
     const apiKey = process.env.STABILITY_API_KEY;
+
     if (!apiKey) throw new Error("Missing Stability API key.");
 
     const response = await fetch(
-      `${process.env.STABILITY_BASE_URL}/v1/generation/${process.env.STABILITY_ENGINE_ID}/text-to-image`,
+      `${apiHost}/v1/generation/${engineId}/text-to-image`,
       {
         method: "POST",
         headers: {
@@ -38,8 +41,6 @@ export async function POST(request: Request) {
         }),
       }
     );
-
-    console.log(response);
 
     if (!response.ok) {
       throw new Error(`Non-200 response: ${await response.text()}`);
