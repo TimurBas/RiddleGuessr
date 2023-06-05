@@ -11,7 +11,7 @@ export default function IdleTimeoutProvider({ children }) {
   const [isIdle, setIsIdle] = useState(false);
 
   if (isIdle) {
-    alert("you are idle");
+    alert("you are idle hehe");
     supabase.auth.signOut();
   }
 
