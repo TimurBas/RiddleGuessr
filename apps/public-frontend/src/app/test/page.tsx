@@ -5,11 +5,7 @@ import { Database } from "supa";
 
 export default async function ServerComponent() {
   const supabase = createServerComponentClient<Database>({ cookies });
-  const { data } = await supabase
-    .from("images")
-    .select("movie_id")
-    .eq("movie_id", "interstellar");
-
+  const { data } = await supabase.from("images").select();
   console.log(data);
   return <div>Test</div>;
 }
