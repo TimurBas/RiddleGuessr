@@ -9,18 +9,90 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      users: {
+      billing: {
         Row: {
-          created_at: string
+          card_number: string | null
+          created_at: string | null
+          cvv: string | null
+          expiration_date: string | null
           id: string
+          subscription_type: string | null
         }
         Insert: {
-          created_at?: string
+          card_number?: string | null
+          created_at?: string | null
+          cvv?: string | null
+          expiration_date?: string | null
           id?: string
+          subscription_type?: string | null
         }
         Update: {
-          created_at?: string
+          card_number?: string | null
+          created_at?: string | null
+          cvv?: string | null
+          expiration_date?: string | null
           id?: string
+          subscription_type?: string | null
+        }
+      }
+      images: {
+        Row: {
+          created_at: string | null
+          id: string
+          image_base64: string
+          movie_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          image_base64: string
+          movie_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          image_base64?: string
+          movie_id?: string | null
+        }
+      }
+      movies: {
+        Row: {
+          created_at: string | null
+          genre: string
+          language_code: string
+          title: string
+          year: number
+        }
+        Insert: {
+          created_at?: string | null
+          genre: string
+          language_code: string
+          title: string
+          year: number
+        }
+        Update: {
+          created_at?: string | null
+          genre?: string
+          language_code?: string
+          title?: string
+          year?: number
+        }
+      }
+      users: {
+        Row: {
+          billing_id: string
+          created_at: string
+          email: string
+        }
+        Insert: {
+          billing_id: string
+          created_at?: string
+          email: string
+        }
+        Update: {
+          billing_id?: string
+          created_at?: string
+          email?: string
         }
       }
     }
