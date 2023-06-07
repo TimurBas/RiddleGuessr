@@ -14,6 +14,11 @@ const UploadImages = async () => {
       {data && (
         <Image src={data} alt="AI Generated Image" width={192} height={192} />
       )}
+      {!isLoading && (
+        <Image src={data} alt="AI Generated Image" width={192} height={192} />
+      )}
+      <img src={data} aria-aria-label="asd" />
+      <p>{data}</p>
     </div>
   );
 };
