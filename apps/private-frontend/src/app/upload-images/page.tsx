@@ -4,19 +4,15 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "supa";
 import { decode } from "base64-arraybuffer";
 import useStabilityEndpoint from "../../hooks/useStabilityEndpoint";
+import { resolvePrivateBaseUrl, throwErrorOnEmptyList } from "utils";
+
+export const dynamic = "force-dynamic";
 
 const UploadImages = async () => {
-  const {
-    data: base64List,
-    isLoading,
-    error: base64error,
-  } = useStabilityEndpoint({
-    input: "Interstellar",
-  });
+  const { base64List } = await GetStabilityAnswer("Interstellar");
   console.log("*****base64*****");
 
   console.log("base64list:", base64List);
-  console.log("error:", base64error);
   console.log("*****base64*****");
 
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -57,3 +53,26 @@ const UploadImages = async () => {
 };
 
 export default UploadImages;
+type StabilityResponse = {
+  base64List: string[];
+};
+
+const GetStabilityAnswer = async (
+  input: string
+): Promise<StabilityResponse> => {
+  const completeUrl = `${resolvePrivateBaseUrl()}/api/stability`;
+  const options: RequestInit = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  };
+
+  const response = await fetch(completeUrl, options);
+  const json: StabilityResponse = await response.json();
+
+  throwErrorOnEmptyList(json.base64List);
+
+  return json;
+};
