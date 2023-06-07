@@ -16,7 +16,7 @@ const UploadImages = async () => {
   console.log("*****base64*****");
 
   console.log("base64list:", base64List);
-  console.log("error": base64error)
+  console.log("error:", base64error);
   console.log("*****base64*****");
 
   const supabase = createServerComponentClient<Database>({ cookies });
