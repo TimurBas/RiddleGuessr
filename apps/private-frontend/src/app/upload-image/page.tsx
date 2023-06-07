@@ -8,6 +8,7 @@ const UploadImages = async () => {
   const { data, error, isLoading } = useUploadImageEndpoint({
     movieTitle: "Prison Break",
   });
+  console.log(data);
   return (
     <div>
       {data && (
