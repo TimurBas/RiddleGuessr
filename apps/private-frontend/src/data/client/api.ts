@@ -50,3 +50,22 @@ export const GetStabilityAnswer = async (
 
   return json;
 };
+
+export const GetUploadImageAnswer = async (
+  movieTitle: string
+): Promise<string> => {
+  const completeUrl = `${resolvePrivateBaseUrl()}/api/supabase/upload-image`;
+  const options: RequestInit = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(movieTitle),
+  };
+
+  const response = await fetch(completeUrl, options);
+  const json: string = await response.json();
+
+  throwErrorOnEmptyString(json);
+  return json;
+};
