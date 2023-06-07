@@ -41,6 +41,14 @@ export async function POST(request: Request) {
       .eq("movie_id", movieTitle)
       .single();
 
+    const a = await supabase
+      .from("images")
+      .select("*")
+      .eq("movie_id", movieTitle);
+
+    console.log(imageDbRes);
+    console.log(a);
+
     const {
       data: { publicUrl },
     } = await supabase.storage
