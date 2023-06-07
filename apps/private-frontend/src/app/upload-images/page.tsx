@@ -10,7 +10,9 @@ const UploadImages = async () => {
   });
   return (
     <div>
-      <Image src={data} alt="AI Generated Image" width={192} height={192} />
+      {data && (
+        <Image src={data} alt="AI Generated Image" width={192} height={192} />
+      )}
     </div>
   );
 };
