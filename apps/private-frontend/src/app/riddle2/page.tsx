@@ -1,8 +1,7 @@
-import React from "react";
-import { cookies } from "next/headers";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "supa";
-import Base64Image from "../../components/ui/atomic/Base64Image";
+import Base64Image from "../../components/ui/Base64Image";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
