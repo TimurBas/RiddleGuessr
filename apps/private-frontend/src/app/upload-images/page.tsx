@@ -3,8 +3,8 @@ import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "supa";
 import { decode } from "base64-arraybuffer";
-import useStabilityEndpoint from "../../hooks/useStabilityEndpoint";
 import { resolvePrivateBaseUrl, throwErrorOnEmptyList } from "utils";
+import { randomUUID } from "crypto";
 
 export const dynamic = "force-dynamic";
 
@@ -17,9 +17,11 @@ const UploadImages = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
 
   base64List.map(async (base64Image) => {
+    const id = randomUUID();
+
     const { data, error } = await supabase.storage
       .from("images")
-      .upload("public/interstellar1.png", decode(base64Image), {
+      .upload(`${id}.png`, decode(base64Image), {
         contentType: "image/png",
       });
 
@@ -28,24 +30,24 @@ const UploadImages = async () => {
     console.log("error:", error);
     // console.log("*****storage*****");
 
-    // const {
-    //   data: insertData,
-    //   count,
-    //   error: insertError,
-    //   status,
-    //   statusText,
-    // } = await supabase.from("images").insert({
-    //   image_base64: data.path,
-    //   movie_id: "Interstellar",
-    // });
+    const {
+      data: insertData,
+      count,
+      error: insertError,
+      status,
+      statusText,
+    } = await supabase.from("images").insert({
+      image_base64: data.path,
+      movie_id: "Interstellar",
+    });
 
-    // console.log("*****table*****");
-    // console.log("data:", insertData);
-    // console.log("error:", insertError);
-    // console.log("count:", count);
-    // console.log("status:", status);
-    // console.log("statusText:", statusText);
-    // console.log("*****table*****");
+    console.log("*****table*****");
+    console.log("data:", insertData);
+    console.log("error:", insertError);
+    console.log("count:", count);
+    console.log("status:", status);
+    console.log("statusText:", statusText);
+    console.log("*****table*****");
   });
 
   return <div>UploadImages</div>;
