@@ -64,7 +64,9 @@ export const GetUploadImageAnswer = async (
   };
 
   const response = await fetch(completeUrl, options);
+  console.log(response);
   const json: string = await response.json();
+  console.log(json);
 
   throwErrorOnEmptyString(json);
   return json;
