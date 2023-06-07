@@ -6,7 +6,7 @@ import useUploadImageEndpoint from "../../hooks/useUploadImageEndpoint";
 
 const UploadImages = async () => {
   const { data, error, isLoading } = useUploadImageEndpoint({
-    movieTitle: "Interstellar",
+    movieTitle: "Prison Break",
   });
   return (
     <div>

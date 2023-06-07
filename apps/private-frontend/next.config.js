@@ -1,6 +1,15 @@
 module.exports = {
   transpilePackages: ["ui"],
   reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'supabase.co',
+        port: '',
+      },
+    ],
+  },
   async headers() {
     return [
       {
