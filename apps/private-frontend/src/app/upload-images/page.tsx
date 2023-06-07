@@ -5,6 +5,7 @@ import { Database } from "supa";
 import { decode } from "base64-arraybuffer";
 import { resolvePrivateBaseUrl, throwErrorOnEmptyList } from "utils";
 import { randomUUID } from "crypto";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +51,27 @@ const UploadImages = async () => {
     console.log("*****table*****");
   });
 
-  return <div>UploadImages</div>;
+  const imageDbRes = await supabase
+    .from("images")
+    .select("*")
+    .eq("movie_id", "Interstellar")
+    .single();
+  const {
+    data: { publicUrl },
+  } = await supabase.storage
+    .from("images")
+    .getPublicUrl(imageDbRes.data.image_base64);
+
+  return (
+    <div>
+      <Image
+        src={publicUrl}
+        alt="AI Generated Image"
+        width={192}
+        height={192}
+      />
+    </div>
+  );
 };
 
 export default UploadImages;
