@@ -10,6 +10,10 @@ type StabilityResponse = {
   base64List: string[];
 };
 
+type UploadImageResponse = {
+  publicUrl: string;
+};
+
 export const GetChatGptAnswer = async (
   input: string
 ): Promise<ChatGptResponse> => {
@@ -53,7 +57,7 @@ export const GetStabilityAnswer = async (
 
 export const GetUploadImageAnswer = async (
   movieTitle: string
-): Promise<string> => {
+): Promise<UploadImageResponse> => {
   const completeUrl = `${resolvePrivateBaseUrl()}/api/supabase/upload-image`;
   const options: RequestInit = {
     method: "POST",
@@ -64,9 +68,8 @@ export const GetUploadImageAnswer = async (
   };
 
   const response = await fetch(completeUrl, options);
-  const json: string = await response.json();
-  console.log(json);
+  const json: UploadImageResponse = await response.json();
 
-  throwErrorOnEmptyString(json);
+  throwErrorOnEmptyString(json.publicUrl);
   return json;
 };
