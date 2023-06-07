@@ -67,9 +67,15 @@ const UploadImages = async () => {
 
   return (
     <div>
-      {publicUrls.map((url) => {
+      {publicUrls.map((url, index) => {
         return (
-          <Image src={url} alt="AI Generated Image" width={192} height={192} />
+          <Image
+            key={index}
+            src={url}
+            alt="AI Generated Image"
+            width={192}
+            height={192}
+          />
         );
       })}
     </div>
