@@ -5,7 +5,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'supabase.co',
+        hostname: 'czznftpbupwdynazsvoq.supabase.co',
         port: '',
       },
     ],
