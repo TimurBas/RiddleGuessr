@@ -25,7 +25,6 @@ export default function useUploadImageEndpoint({
       try {
         const response = await GetUploadImageAnswer(movieTitle);
         const publicUrl = response.publicUrl;
-        console.log(publicUrl);
         setData(publicUrl);
       } catch (error) {
         setError(error as Error);
