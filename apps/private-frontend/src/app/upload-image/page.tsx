@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import useUploadImageEndpoint from "../../hooks/useUploadImageEndpoint";
 
-const UploadImages = async () => {
+const UploadImages = () => {
   const { data, error, isLoading } = useUploadImageEndpoint({
     movieTitle: "Prison Break",
   });
