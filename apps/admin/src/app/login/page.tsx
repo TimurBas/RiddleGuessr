@@ -1,46 +1,39 @@
 "use client";
 
-import React, { FC, useState } from "react";
-import { useSupabase } from "../../supabase/useSupabase";
+import React, { useState } from "react";
 import InputField from "ui/InputField";
+import { useSupabase } from "../../supabase/useSupabase";
+import { AuthRedirect } from "../../data/client/api";
 
-const SignUpForm: FC = () => {
+export default function Page() {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
-  const [isSignUpSuccesful, setIsSignUpSuccesful] = useState(true);
+  const [isLoginSucessful, setIsLoginSucessful] = useState(true);
 
   const handleKeyDown = async (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (event.key === "Enter") {
-      await handleSignUp();
+      await handleLogin();
     }
   };
 
-  const handleSignUp = async () => {
+  const handleLogin = async () => {
     const {
       error,
-      data: { user },
-    } = await supabase.auth.signUp({
+      data: { session },
+    } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
-      options: {
-        emailRedirectTo: "https://app.riddleguessr.com",
-      },
     });
 
-    if (error) setIsSignUpSuccesful(false);
-
-    console.log(user);
+    if (error) setIsLoginSucessful(false);
+    if (session) await AuthRedirect();
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-y-3">
-      <h1 className="text-3xl font-semibold text-white">Create an account</h1>
-      <h6 className="text-gray-400">
-        Enter your email and password below to create your account
-      </h6>
+    <>
       <InputField
         value={email}
         setValue={setEmail}
@@ -55,15 +48,13 @@ const SignUpForm: FC = () => {
         type="password"
         onKeyDown={handleKeyDown}
       />
-      {!isSignUpSuccesful && <p className="text-red-600">Error</p>}
       <button
         className="h-10 rounded-md bg-sky-500 px-4 font-medium text-white"
-        onClick={handleSignUp}
+        onClick={handleLogin}
       >
         Continue
       </button>
-    </div>
+      {!isLoginSucessful && <p className="text-red-600">Error</p>}
+    </>
   );
-};
-
-export default SignUpForm;
+}
