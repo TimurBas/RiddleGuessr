@@ -1,6 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": [
+    "STAGING_ADMIN_URL",
+    "PROD_ADMIN_URL",
     "LOCAL_PUBLIC_FRONTEND_URL",
     "STAGING_PUBLIC_FRONTEND_URL",
     "PROD_PUBLIC_FRONTEND_URL",
