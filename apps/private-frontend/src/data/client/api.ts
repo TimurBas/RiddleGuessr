@@ -1,6 +1,9 @@
-import { handleNullOrEmptyString, throwErrorOnEmptyList } from "utils";
-import throwErrorOnEmptyString from "utils/stringUtil";
-import { resolvePrivateBaseUrl } from "utils/urlUtil";
+import {
+  handleNullOrEmptyString,
+  throwErrorOnEmptyList,
+  throwErrorOnEmptyString,
+  resolvePrivateBaseUrl,
+} from "utils";
 
 type ChatGptResponse = {
   answer: string;
@@ -8,10 +11,6 @@ type ChatGptResponse = {
 
 type StabilityResponse = {
   base64List: string[];
-};
-
-type UploadImageResponse = {
-  publicUrl: string;
 };
 
 export const GetChatGptAnswer = async (
@@ -52,24 +51,5 @@ export const GetStabilityAnswer = async (
 
   throwErrorOnEmptyList(json.base64List);
 
-  return json;
-};
-
-export const GetUploadImageAnswer = async (
-  movieTitle: string
-): Promise<UploadImageResponse> => {
-  const completeUrl = `${resolvePrivateBaseUrl()}/api/supabase/upload-image`;
-  const options: RequestInit = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(movieTitle),
-  };
-
-  const response = await fetch(completeUrl, options);
-  const json: UploadImageResponse = await response.json();
-
-  throwErrorOnEmptyString(json.publicUrl);
   return json;
 };
