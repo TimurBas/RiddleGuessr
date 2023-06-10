@@ -8,6 +8,15 @@ const SignUpForm: FC = () => {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
+  const [isSignUpSuccesful, setIsSignUpSuccesful] = useState(true);
+
+  const handleKeyDown = async (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      await handleSignUp();
+    }
+  };
 
   const handleSignUp = async () => {
     const {
@@ -20,6 +29,8 @@ const SignUpForm: FC = () => {
         emailRedirectTo: "https://app.riddleguessr.com",
       },
     });
+
+    if (error) setIsSignUpSuccesful(false);
 
     console.log(user);
   };
@@ -35,13 +46,16 @@ const SignUpForm: FC = () => {
         setValue={setEmail}
         placeholder="name@example.com"
         type="email"
+        onKeyDown={handleKeyDown}
       />
       <InputField
         value={password}
         setValue={setPassowrd}
         placeholder="*******"
         type="password"
+        onKeyDown={handleKeyDown}
       />
+      {!isSignUpSuccesful && <p className="text-red-600">Error</p>}
       <button
         className="h-10 rounded-md bg-sky-500 px-4 font-medium text-white"
         onClick={handleSignUp}
