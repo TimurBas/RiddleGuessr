@@ -38,13 +38,14 @@ export async function POST(request: Request) {
     const imageDbRes = await supabase
       .from("images")
       .select("*")
-      .eq("movie_id", movieTitle);
+      .eq("image_base64", fileName)
+      .single();
 
     const {
       data: { publicUrl },
     } = await supabase.storage
       .from("images")
-      .getPublicUrl(imageDbRes.data[0].image_base64);
+      .getPublicUrl(imageDbRes.data.image_base64);
 
     return NextResponse.json({ publicUrl });
   } catch (error: any) {

@@ -15,9 +15,13 @@ const MovieImage: FC<Props> = ({ movieTitle }) => {
 
   return (
     <div>
-      {isLoading && <p>Generating & uploading an image of {movieTitle}...</p>}
+      {isLoading && (
+        <p className="text-slate-50">
+          Generating & uploading an image of {movieTitle}...
+        </p>
+      )}
       {error && (
-        <p>
+        <p className="text-slate-50">
           There was an error with the upload of {movieTitle}. Payload --
           Message:{error.message}, Name:{error.name}
         </p>
