@@ -24,10 +24,15 @@ export async function middleware(req: NextRequest) {
   const isLoginPage = req.nextUrl.pathname === "/login";
 
   if (!session && !isLoginPage) return redirectRes;
-  if (session.user.email !== "timurbas1@hotmail.com") return redirectRes;
 
-  if (session && isLoginPage)
-    return NextResponse.redirect(new URL("/platform", resolveRedirectUrl()));
+  if (session) {
+    if (session.user.email !== "timurbas1@hotmail.com") {
+      return redirectRes;
+    }
+
+    if (session && isLoginPage)
+      return NextResponse.redirect(new URL("/platform", resolveRedirectUrl()));
+  }
 
   return res;
 }
