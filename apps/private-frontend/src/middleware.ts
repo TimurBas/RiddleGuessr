@@ -16,12 +16,10 @@ export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
   if (req.method === "OPTIONS") {
-    const requestHeaders = Object.fromEntries(req.headers.entries());
-    for (const [key, value] of Object.entries(requestHeaders)) {
-      console.log(`${key}: ${value}`);
-    }
-    return NextResponse.next();
+    console.log("OPTIONS");
+    return new Response(null, { status: 204 });
   }
+
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
     data: { session },
