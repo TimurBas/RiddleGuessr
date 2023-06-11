@@ -10,6 +10,7 @@ export * from "./atomic/Header";
 export * from "./atomic/TopBar";
 export * from "./atomic/Emoji";
 export * from "./atomic/MovieImage";
+export * from "./atomic/Base64Image";
 export * from "./header/MainHeader";
 export * from "./auth/login/LoginForm";
 export * from "./auth/sign-up/SignUpForm";
