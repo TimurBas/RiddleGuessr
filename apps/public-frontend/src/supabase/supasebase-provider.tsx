@@ -39,8 +39,9 @@ export default function SupabaseProvider({
     } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN") {
         location.reload();
+      } else {
+        router.refresh();
       }
-      router.refresh();
     });
 
     console.log("HEJ");
