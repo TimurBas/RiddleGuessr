@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button, Header } from "ui";
 
 export default function Page() {
@@ -7,6 +8,7 @@ export default function Page() {
     <>
       <Header text="Webs" />
       <Button />
+      <Link href={"/riddle"} />
     </>
   );
 }
