@@ -37,7 +37,12 @@ export default function SupabaseProvider({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      router.refresh();
+      console.log(event);
+      if (event === "SIGNED_IN") {
+        location.reload();
+      } else {
+        router.refresh();
+      }
     });
 
     console.log("HEJ");

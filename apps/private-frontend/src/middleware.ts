@@ -14,11 +14,12 @@ const resolveRedirectUrl = () => {
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
-  console.log(req.method);
+
   if (req.method === "OPTIONS") {
-    console.log("hejejejejej");
-    return res;
+    console.log("OPTIONS CALLED");
+    return new Response(null, { status: 204 });
   }
+
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
     data: { session },

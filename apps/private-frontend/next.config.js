@@ -13,13 +13,12 @@ module.exports = {
   async headers() {
     return [
       {
-        // matching all API routes
         source: "/",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://riddleguessr.com",
+            value: "https://riddleguessr.com, https://staging.riddleguessr.com",
           },
           {
             key: "Access-Control-Allow-Methods",
@@ -27,7 +26,8 @@ module.exports = {
           },
           {
             key: "Access-Control-Allow-Headers",
-            value: "*",
+            value:
+              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, next-router-state-tree, next-url, rsc",
           },
         ],
       },
