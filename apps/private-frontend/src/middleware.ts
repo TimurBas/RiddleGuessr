@@ -21,6 +21,10 @@ export async function middleware(req: NextRequest) {
   }
 
   const supabase = createMiddlewareClient<Database>({ req, res });
+  console.log(req.nextUrl);
+  if (req.url.startsWith("https://staging.riddleguessr.com")) {
+    return new Response(null, { status: 204 });
+  }
   const {
     data: { session },
   } = await supabase.auth.getSession();
