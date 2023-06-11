@@ -8,7 +8,7 @@ export default function Page() {
     <>
       <Header text="Webs" />
       <Button />
-      <Link href={"/riddle"} />
+      <Link href={"/riddle"}>Click</Link>
     </>
   );
 }
