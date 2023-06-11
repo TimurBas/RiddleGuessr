@@ -29,7 +29,6 @@ const LoginForm: FC = () => {
     });
 
     if (error) setIsLoginSucessful(false);
-    if (session) await AuthRedirect();
   };
 
   const handleGoogleLogin = async () => {

@@ -23,7 +23,3 @@ export async function middleware(req: NextRequest) {
   if (session) return NextResponse.redirect(new URL("/", baseUrl));
   return res;
 }
-
-export const config = {
-  matcher: "/login/:path*",
-};
