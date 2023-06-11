@@ -40,6 +40,8 @@ export default function SupabaseProvider({
       router.refresh();
     });
 
+    console.log("HEJ");
+
     return () => {
       subscription.unsubscribe();
     };

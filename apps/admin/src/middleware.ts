@@ -4,6 +4,14 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { Database } from "supa";
 
+const resolveRedirectUrl = () => {
+  const env = process.env.NEXT_PUBLIC_VERCEL_ENV;
+
+  if (env === "production") return process.env.PROD_ADMIN_URL;
+  if (env === "preview") return process.env.STAGING_ADMIN_URL;
+  return process.env.LOCAL_PRIVATE_FRONTEND_URL;
+};
+
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
@@ -12,26 +20,21 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session) return NextResponse.redirect("https://riddleguessr.com");
+  const isLoginPage = req.nextUrl.pathname === "/login";
+  if (!session && !isLoginPage)
+    return NextResponse.redirect("https://riddleguessr.com");
 
   if (session?.user) {
     res.cookies.delete("sb-czznftpbupwdynazsvoq-auth-token");
     res.cookies.delete("supabase-auth-token");
   }
 
+  if (session && isLoginPage)
+    return NextResponse.redirect(new URL("/platform", resolveRedirectUrl()));
+
   return res;
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/",
-    "/((?!_next/static|_next/image|favicon.ico|login|api/:path*).*)",
-  ],
+  matcher: ["/", "/login", "/platform", "/upload-image"],
 };
