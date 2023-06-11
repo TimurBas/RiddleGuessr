@@ -17,6 +17,8 @@ export async function middleware(req: NextRequest) {
 
   if (req.method === "OPTIONS") {
     const requestHeaders = new Headers(req.headers);
+    requestHeaders.forEach((a) => console.log(a));
+    console.log(requestHeaders);
     return NextResponse.next({ headers: requestHeaders });
   }
   const supabase = createMiddlewareClient<Database>({ req, res });
