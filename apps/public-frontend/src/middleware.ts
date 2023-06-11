@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest) {
     for (const [key, value] of Object.entries(requestHeaders)) {
       console.log(`${key}: ${value}`);
     }
-    return new Response(null, { status: 204 });
+    return res;
   }
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
