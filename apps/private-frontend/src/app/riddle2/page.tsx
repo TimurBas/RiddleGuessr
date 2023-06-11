@@ -1,5 +1,5 @@
 import { Database } from "supa";
-import Base64Image from "../../components/ui/Base64Image";
+import Base64Image from "ui/atomic/Base64Image";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 

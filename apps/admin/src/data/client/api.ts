@@ -36,7 +36,7 @@ export const GetStabilityAnswer = async (
 export const GetUploadImageAnswer = async (
   movieTitle: string
 ): Promise<UploadImageResponse> => {
-  const completeUrl = `${resolveAdminBaseUrl()}/api/supabase/upload-image`;
+  const completeUrl = `${resolveAdminBaseUrl()}/api/supabase/create-image`;
   const options: RequestInit = {
     method: "POST",
     headers: {

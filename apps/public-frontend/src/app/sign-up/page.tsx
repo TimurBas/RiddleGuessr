@@ -1,7 +1,13 @@
-import React from "react";
-import SignUpSection from "../../components/features/signup/SignUpSection";
+import { FC } from "react";
+import { SupabaseClient } from "types";
+import SignUpForm from "ui/auth/sign-up/SignUpForm";
 
-const SignUp = () => {
-  return <SignUpSection />;
+type Props = {
+  supabase: SupabaseClient;
 };
+
+const SignUp: FC<Props> = ({ supabase }) => {
+  return <SignUpForm supabase={supabase} />;
+};
+
 export default SignUp;

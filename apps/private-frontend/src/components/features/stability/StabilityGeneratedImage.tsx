@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC } from "react";
-import Base64Image from "../../ui/Base64Image";
+import Base64Image from "ui/atomic/Base64Image";
 import useStabilityEndpoint from "../../../hooks/useStabilityEndpoint";
 
 type Props = {
