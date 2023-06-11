@@ -19,7 +19,7 @@ module.exports = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://staging.riddleguessr.com",
+            value: "https://staging.riddleguessr.com/login",
           },
           {
             key: "Access-Control-Allow-Methods",
