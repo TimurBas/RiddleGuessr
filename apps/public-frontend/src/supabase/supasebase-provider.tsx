@@ -37,7 +37,7 @@ export default function SupabaseProvider({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      router.refresh();
+      if (event !== "INITIAL_SESSION") router.refresh();
     });
 
     return () => {
