@@ -1,12 +1,11 @@
+"use client";
+
 import { FC } from "react";
-import { SupabaseClient } from "types";
 import SignUpForm from "ui/auth/sign-up/SignUpForm";
+import { useSupabase } from "../../supabase/useSupabase";
 
-type Props = {
-  supabase: SupabaseClient;
-};
-
-const SignUp: FC<Props> = ({ supabase }) => {
+const SignUp: FC = () => {
+  const { supabase } = useSupabase();
   return <SignUpForm supabase={supabase} />;
 };
 
