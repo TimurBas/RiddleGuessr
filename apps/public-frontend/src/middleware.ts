@@ -18,6 +18,7 @@ export async function middleware(req: NextRequest) {
   if (req.method === "OPTIONS") {
     return res;
   }
+
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
     data: { session },
@@ -25,6 +26,7 @@ export async function middleware(req: NextRequest) {
 
   const baseUrl = resolveRedirectUrl();
   if (session) return NextResponse.redirect(new URL("/", baseUrl));
+
   return res;
 }
 
