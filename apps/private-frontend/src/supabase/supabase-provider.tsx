@@ -26,7 +26,7 @@ export default function SupabaseProvider({
         domain: "riddleguessr.com",
         maxAge: "3600",
         path: "/",
-        sameSite: "None",
+        sameSite: "Lax",
         secure: "secure",
       },
     })
