@@ -14,10 +14,11 @@ const resolveRedirectUrl = () => {
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
-  console.log(req.method);
+
   if (req.method === "OPTIONS") {
-    console.log("hejejejejej");
     const requestHeaders = new Headers(req.headers);
+    requestHeaders.forEach((a) => console.log(a));
+    console.log(requestHeaders);
     return NextResponse.next({ headers: requestHeaders });
   }
   const supabase = createMiddlewareClient<Database>({ req, res });
