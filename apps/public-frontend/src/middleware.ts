@@ -14,20 +14,18 @@ const resolveRedirectUrl = () => {
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
-  console.log(req.method);
+
   if (req.method === "OPTIONS") {
-    console.log("FUCK yea");
-    return res;
+    const requestHeaders = new Headers(req.headers);
+    return NextResponse.next({ headers: requestHeaders });
   }
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  const anan: ResponseInit = {
-    headers: req.headers,
-  };
+
   const baseUrl = resolveRedirectUrl();
-  if (session) return NextResponse.redirect(baseUrl, anan);
+  if (session) return NextResponse.redirect(new URL("/", baseUrl));
   return res;
 }
 
