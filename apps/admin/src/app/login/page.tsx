@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import InputField from "ui/InputField";
 import { useSupabase } from "../../supabase/useSupabase";
-import { AuthRedirect } from "../../data/client/api";
 
 export default function Page() {
   const { supabase } = useSupabase();
@@ -29,7 +28,6 @@ export default function Page() {
     });
 
     if (error) setIsLoginSucessful(false);
-    if (session) await AuthRedirect();
   };
 
   return (

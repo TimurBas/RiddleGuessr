@@ -3,7 +3,6 @@
 import React, { FC, useState } from "react";
 import InputField from "ui/InputField";
 import { useSupabase } from "../../supabase/useSupabase";
-import { AuthRedirect } from "../../data/client/api";
 
 const LoginForm: FC = () => {
   const { supabase } = useSupabase();
