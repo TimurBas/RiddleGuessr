@@ -14,7 +14,7 @@ export default async function ServerComponent() {
 
   return (
     <div>
-      <Base64Image base64Image={first.image_base64} />
+      <Base64Image base64Image={first.storage_image_path} />
       {first.movie_id}
       {first.created_at}
       {first.id}

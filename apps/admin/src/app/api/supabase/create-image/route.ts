@@ -31,21 +31,21 @@ export async function POST(request: Request) {
       status,
       statusText,
     } = await supabase.from("images").insert({
-      image_base64: fileName,
+      storage_image_path: fileName,
       movie_id: movieTitle,
     });
 
     const imageDbRes = await supabase
       .from("images")
       .select("*")
-      .eq("image_base64", fileName)
+      .eq("storage_image_path", fileName)
       .single();
 
     const {
       data: { publicUrl },
     } = await supabase.storage
       .from("images")
-      .getPublicUrl(imageDbRes.data.image_base64);
+      .getPublicUrl(imageDbRes.data.storage_image_path);
 
     return NextResponse.json({ publicUrl });
   } catch (error: any) {
