@@ -4,13 +4,13 @@ module.exports = {
   async headers() {
     return [
       {
-        // matching all API routes
         source: "/login",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://staging-app.riddleguessr.com",
+            value:
+              "https://app.riddleguessr.com, https://staging-app.riddleguessr.com",
           },
           {
             key: "Access-Control-Allow-Methods",

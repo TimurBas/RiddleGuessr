@@ -16,7 +16,6 @@ export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
   if (req.method === "OPTIONS") {
-    console.log("OPTIONS CALLED");
     return res;
   }
   const supabase = createMiddlewareClient<Database>({ req, res });
