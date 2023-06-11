@@ -19,9 +19,9 @@ const UploadImages: FC = () => {
   return (
     <div>
       <InputField
-        value={""}
+        value={movieTitle}
         setValue={setMovieTitle}
-        placeholder={""}
+        placeholder={"Some movie title"}
         type={"text"}
         onKeyDown={handleKeyDown}
       />
