@@ -25,7 +25,7 @@ export async function middleware(req: NextRequest) {
   } = await supabase.auth.getSession();
 
   const baseUrl = resolveRedirectUrl();
-  if (session) return NextResponse.redirect(new URL("/", baseUrl));
+  if (session) return NextResponse.redirect(new URL("", baseUrl));
   return res;
 }
 
