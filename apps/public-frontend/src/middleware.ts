@@ -13,13 +13,12 @@ const resolveRedirectUrl = () => {
 };
 
 export async function middleware(req: NextRequest) {
-  console.log(req.url);
   const res = NextResponse.next();
+  if (req.method === "OPTIONS") return res;
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  console.log(session);
 
   const baseUrl = resolveRedirectUrl();
   if (session) return NextResponse.redirect(new URL("/", baseUrl));
