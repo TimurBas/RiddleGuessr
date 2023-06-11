@@ -27,7 +27,7 @@ export async function middleware(req: NextRequest) {
     headers: req.headers,
   };
   const baseUrl = resolveRedirectUrl();
-  if (session) return NextResponse.redirect(anan);
+  if (session) return NextResponse.redirect(baseUrl, anan);
   return res;
 }
 
