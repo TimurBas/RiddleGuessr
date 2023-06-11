@@ -21,14 +21,12 @@ export default function RootLayout({
       <body className="bg-primary">
         <TopBar />
         <div className="flex flex-col p-5">
-          <MainHeader
-            children={
-              <>
-                <HamburgerMenu />
-                <NavigationLinks />
-              </>
-            }
-          />
+          <MainHeader>
+            <>
+              <HamburgerMenu />
+              <NavigationLinks />
+            </>
+          </MainHeader>
         </div>
         <SupabaseProvider>{children}</SupabaseProvider>
         <FooterSection />
