@@ -20,14 +20,15 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session) return NextResponse.redirect("https://riddleguessr.com");
+  const isLoginPage = req.nextUrl.pathname === "/login";
+  if (!session && !isLoginPage)
+    return NextResponse.redirect("https://riddleguessr.com");
 
   if (session?.user) {
     res.cookies.delete("sb-czznftpbupwdynazsvoq-auth-token");
     res.cookies.delete("supabase-auth-token");
   }
 
-  const isLoginPage = req.nextUrl.pathname === "/login";
   if (session && isLoginPage)
     return NextResponse.redirect(new URL("/platform", resolveRedirectUrl()));
 
