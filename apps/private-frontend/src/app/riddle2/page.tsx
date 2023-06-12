@@ -12,12 +12,18 @@ export default async function ServerComponent() {
   const first = data[0];
   console.log(first);
 
+  const {
+    data: { publicUrl },
+  } = await supabase.storage
+    .from("images")
+    .getPublicUrl(first.storage_image_path);
+
   return (
     <div className="flex flex-col items-center justify-center">
-      <MovieImage url={first.storage_image_path} />
-      <p>{first.movie_id}</p>
-      <p>{first.created_at}</p>
-      <p>{first.id}</p>
+      <MovieImage url={publicUrl} />
+      <p className="text-slate-50">{first.movie_id}</p>
+      <p className="text-slate-50">{first.created_at}</p>
+      <p className="text-slate-50">{first.id}</p>
     </div>
   );
 }
