@@ -34,26 +34,35 @@ export interface Database {
           id?: string
           subscription_type?: string | null
         }
+        Relationships: []
       }
       images: {
         Row: {
           created_at: string | null
           id: string
-          image_base64: string
           movie_id: string | null
+          storage_image_path: string
         }
         Insert: {
           created_at?: string | null
           id?: string
-          image_base64: string
           movie_id?: string | null
+          storage_image_path: string
         }
         Update: {
           created_at?: string | null
           id?: string
-          image_base64?: string
           movie_id?: string | null
+          storage_image_path?: string
         }
+        Relationships: [
+          {
+            foreignKeyName: "images_movie_id_fkey"
+            columns: ["movie_id"]
+            referencedRelation: "movies"
+            referencedColumns: ["title"]
+          }
+        ]
       }
       movies: {
         Row: {
@@ -77,6 +86,7 @@ export interface Database {
           title?: string
           year?: number
         }
+        Relationships: []
       }
       users: {
         Row: {
@@ -94,6 +104,14 @@ export interface Database {
           created_at?: string
           email?: string
         }
+        Relationships: [
+          {
+            foreignKeyName: "users_billing_id_fkey"
+            columns: ["billing_id"]
+            referencedRelation: "billing"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {

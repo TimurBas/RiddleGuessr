@@ -1,14 +1,14 @@
 import React, { FC } from "react";
-import HeroHeading from "../../ui/atomic/hero/HeroHeading";
-import HeroSubHeading from "../../ui/atomic/hero/HeroSubHeading";
-import ButtonLink from "../../ui/composite/link/ButtonLink";
+import HeroHeading from "./HeroHeading";
+import ButtonLink from "ui/links/ButtonLink";
+import HeroSubHeading from "./HeroSubHeading";
 
 const HeroSection: FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center pt-14 px-5 gap-y-10">
+    <div className="flex flex-col items-center justify-center gap-y-10 px-5 pt-14">
       <HeroHeading />
       <HeroSubHeading />
-      <div className="flex flex-col md:flex-row items-center justify-center w-full gap-y-4 md:gap-x-4">
+      <div className="flex w-full flex-col items-center justify-center gap-y-4 md:flex-row md:gap-x-4">
         <ButtonLink
           label="Sign up for free"
           link="/sign-up"

@@ -1,7 +1,7 @@
 import { Database } from "supa";
-import Base64Image from "../../components/ui/Base64Image";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import MovieImage from "ui/atomic/MovieImage";
 
 export const dynamic = "force-dynamic";
 
@@ -12,12 +12,18 @@ export default async function ServerComponent() {
   const first = data[0];
   console.log(first);
 
+  const {
+    data: { publicUrl },
+  } = await supabase.storage
+    .from("images")
+    .getPublicUrl(first.storage_image_path);
+
   return (
-    <div>
-      <Base64Image base64Image={first.image_base64} />
-      {first.movie_id}
-      {first.created_at}
-      {first.id}
+    <div className="flex flex-col items-center justify-center">
+      <MovieImage url={publicUrl} />
+      <p className="text-slate-50">{first.movie_id}</p>
+      <p className="text-slate-50">{first.created_at}</p>
+      <p className="text-slate-50">{first.id}</p>
     </div>
   );
 }

@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
-import LoginSection from "../../components/features/login/LoginSection";
+import LoginSection from "ui/auth/login/LoginSection";
+import { useSupabase } from "../../supabase/useSupabase";
 
 const Login = () => {
-  return <LoginSection />;
+  const { supabase } = useSupabase();
+  return <LoginSection supabase={supabase} />;
 };
 export default Login;

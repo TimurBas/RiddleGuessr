@@ -20,12 +20,19 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
+  const redirectRes = NextResponse.redirect("https://riddleguessr.com");
   const isLoginPage = req.nextUrl.pathname === "/login";
-  if (!session && !isLoginPage)
-    return NextResponse.redirect("https://riddleguessr.com");
 
-  if (session && isLoginPage)
-    return NextResponse.redirect(new URL("/platform", resolveRedirectUrl()));
+  if (!session && !isLoginPage) return redirectRes;
+
+  if (session) {
+    if (session.user.email !== "timurbas1@hotmail.com") {
+      return redirectRes;
+    }
+
+    if (session && isLoginPage)
+      return NextResponse.redirect(new URL("/platform", resolveRedirectUrl()));
+  }
 
   return res;
 }

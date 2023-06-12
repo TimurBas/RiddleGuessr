@@ -12,11 +12,12 @@ export default function Page() {
       <Button />
       <Link href={"/riddle"}>Click</Link>
       <button
+        className="bg-slate-50"
         onClick={async () => {
           await supabase.auth.signOut();
         }}
       >
-        Log out
+        <p className="text-slate-800">Log out</p>
       </button>
     </>
   );
